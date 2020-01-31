@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" content="text/css" href="style/fullscreen.css">
     <script src="./js/phaser.js"></script>
 </head>
 <body>
@@ -8,8 +9,8 @@
     <script>
     var config = {
         type: Phaser.AUTO,
-        width: 800,
-        height: 600,
+        width: window.innerWidth,
+        height: window.innerHeight,
         physics: {
             default: 'arcade',
             arcade: {
@@ -26,12 +27,6 @@
 
     function preload ()
     {
-        // this.load.setBaseURL('http://labs.phaser.io');
-
-        // this.load.image('sky', 'assets/skies/space3.png');
-        // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-        // this.load.image('red', 'assets/particles/red.png');
-
         this.load.setBaseURL('./assets');
         this.load.image('logo', '/img/Block_04.png');
     }
