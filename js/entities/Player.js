@@ -82,23 +82,24 @@ class Player
         }
             
         if (this._isFloating)
-                    {
-                        if (cursors.left.isDown)
         {
-           this._player.anims.play('float left', true);
-        }
-            else if (cursors.rigth.isDown)
-                {
-                   this._player.anims.play('float right', true); 
-                }
-            else if (this._player.body.velocity.x < 0){
+            if (cursors.left.isDown)
+            {
+                this._player.anims.play('float left', true);
+            }
+            else if (cursors.right.isDown)
+            {
+               this._player.anims.play('float right', true); 
+            }
+            else if (this._player.body.velocity.x < 0)
+            {
                 this._player.anims.play('float left', true);
             }
             else 
-                {
-                    this._player.anims.play('float right', true); 
-                }
-                    }
+            {
+                this._player.anims.play('float right', true); 
+            }            
+        }
             
         
         
@@ -172,10 +173,10 @@ class Player
         else 
         {
             if (this._player.body.velocity.y > 0)
-                {
-            this._player.setGravityY(-150);
-                   this._isFloating = true;
-        }
+            {
+                this._player.setGravityY(-150);
+                this._isFloating = true;
+            }
     
         }
     }
