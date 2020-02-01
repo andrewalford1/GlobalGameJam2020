@@ -2,6 +2,8 @@ class Player
 {
     //Private Fields
     _player;
+    _canDoubleJump;
+    _isFloating;
 
     constructor (game)
     {
@@ -11,18 +13,44 @@ class Player
         this._player.setCollideWorldBounds(false);
         this._player.setDrag(30);
         this._player.setMaxVelocity(300, 1000);
+        this._canDoubleJump = false;
+        this._isFloating = false;
 
         var badVariablePlayer = this._player;
+        var badVariableIsFloating = this._isFloating;
+        var badVariableIsDoubleJump = this._canDoubleJump;
 
         game.input.keyboard.on('keydown_UP', function(event)
         {
             if (badVariablePlayer.body.touching.down)
             {
                 badVariablePlayer.setVelocityY(-330);
+                if (badVariablePlayer.body.velocity.x < 0)
+                {
+                    badVariablePlayer.anims.play('jump left', true);
+                }
+                else 
+                    {
+                        badVariablePlayer.anims.play('jump right', true);
+                    }
+            } 
+            else if (badVariableIsDoubleJump) 
+            {
+                badVariablePlayer.setVelocityY(-330);
+                if (badVariablePlayer.body.velocity.x < 0)
+                {
+                    badVariablePlayer.anims.play('jump left', true);
+                }
+                else 
+                    {
+                        badVariablePlayer.anims.play('jump right', true);
+                    }
+                    badVariableIsDoubleJump = false;
             } 
             else 
             {
-                badVariablePlayer.setGravityY(-250)
+                    badVariablePlayer.setGravityY(-200);
+                    badVariableIsFloating = true;
             }
         });
         game.input.keyboard.on('keydown_DOWN', function(event) {
@@ -33,9 +61,16 @@ class Player
             else 
             {
                 badVariablePlayer.setVelocityY(750);
+                badVariablePlayer.anims.play('pound', true);
             }
         });
 
+        game.anims.create({
+            key: 'pound',
+            frames: game.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
+            frameRate: 10,
+            repeat: -1
+        });
         game.anims.create({
             key: 'float left',
             frames: game.anims.generateFrameNumbers('urania float', {start: 0, end: 1}),
@@ -45,6 +80,18 @@ class Player
          game.anims.create({
             key: 'float right',
             frames: game.anims.generateFrameNumbers('urania float', {start: 2, end: 3}),
+            frameRate: 10,
+            repeat: -1
+        });
+        game.anims.create({
+            key: 'jump left',
+            frames: game.anims.generateFrameNumbers('urania jump', {start: 0, end: 1}),
+            frameRate: 10,
+            repeat: -1
+        });
+         game.anims.create({
+            key: 'jump right',
+            frames: game.anims.generateFrameNumbers('urania jump', {start: 2, end: 3}),
             frameRate: 10,
             repeat: -1
         });
@@ -70,6 +117,7 @@ class Player
             frameRate: 10,
             repeat: -1
         });
+        this._player.anims.play('turn left');
     }
 
     Update = function(cursors)
@@ -87,13 +135,50 @@ class Player
             if (this._player.body.touching.down)
             {
                 this._player.setAccelerationX(0);
+                
+                if (this._player.body.velocity.x < 0){
+                
+                this._player.anims.play('turn left');
+                
+            }
+            else if (this._player.anims.frameRate == 10)
+            {
+                
+                this._player.anims.play('turn right');
+                
+            }
+                
             }
         }
+            
+        if (this._isFloating)
+        {
+            if (cursors.left.isDown)
+            {
+                this._player.anims.play('float left', true);
+            }
+            else if (cursors.right.isDown)
+            {
+               this._player.anims.play('float right', true); 
+            }
+            else if (this._player.body.velocity.x < 0)
+            {
+                this._player.anims.play('float left', true);
+            }
+            else
+            {
+                this._player.anims.play('float right', true); 
+            }            
+        }
+            
+        
         
         if (this._player.body.touching.down)
         {
             // this._player.anims.play('turn');
             this._player.setDragX(1500);
+            this._isFloating = false;
+            this._canDoubleJump = true;
         } 
         else 
         {
@@ -104,14 +189,37 @@ class Player
         {
             this._player.setGravityY(0);
         }
+        
+        if (!cursors.up.isDown)
+            {
+                this._isFloating = false
+                if (!this._player.body.touching.down)
+                {
+                    if (this._player.body.velocity.x < 0)
+            {
+                this._player.anims.play('jump left', true);
+            }
+            else 
+                {
+                    this._player.anims.play('jump right', true);
+                }
+                }
+            }
     }
 
     MoveLeft = function()
     {
-        this._player.anims.play('left', true);
+        
         if (this._player.body.touching.down)
         {
             this._player.setAccelerationX(-500);
+            if (this._player.body.velocity.x < 0){
+                this._player.anims.play('left', true);
+            }
+            else
+            {
+                this._player.anims.play('turn left');
+            }
             return;
         }
 
@@ -120,10 +228,17 @@ class Player
 
     MoveRight = function()
     {
-        this._player.anims.play('right', true);
+        
         if (this._player.body.touching.down)
         {
             this._player.setAccelerationX(500);
+            if (this._player.body.velocity.x > 0){
+                this._player.anims.play('right', true);
+            }
+            else
+            {
+                this._player.anims.play('turn right');
+            }
             return;
         } 
 
