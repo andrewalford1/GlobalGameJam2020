@@ -46,9 +46,12 @@ var canDoubleJump = false
 
 function preload ()
 {
-   this.load.image('bg', 'assets/img/sky.png')
+   this.load.image('bg', 'assets/img/Background.png');
    this.load.image('player', 'assets/img/star.png');
    this.load.image('platform', 'assets/img/platform.png');
+    this.load.image('column', 'assets/img/Column 1.png');
+    this.load.image('cloud', 'assets/img/Cloud1.png');
+    this.load.image('grass', 'assets/img/Platform1.png');
    this.load.image('bomb', 'assets/img/bomb.png');
     this.load.spritesheet('dude', 'assets/img/dude.png', {frameWidth: 32, frameHeight: 48});
 }
@@ -56,13 +59,14 @@ function preload ()
 function create ()
 {
     //bg and platform setup
-    background = this.add.image(0, 0, 'bg').setScale(4);
+    background = this.add.image(0, 0, 'bg').setOrigin(0,0);
     background.setScrollFactor(0);
 
     platforms = this.physics.add.staticGroup();
     const ground = platforms.create(400, HEIGHT-30, 'platform').setScale(10, 2).refreshBody();
-    platforms.create(WIDTH-1000, HEIGHT-200, 'platform');
-    platforms.create(WIDTH-300, HEIGHT-300, 'platform');
+    platforms.create(WIDTH-1000, HEIGHT-200, 'cloud').setScale(0.2, 0.2).refreshBody();
+    platforms.create(WIDTH-300, HEIGHT-300, 'grass').setScale(0.2, 0.2).refreshBody();
+    platforms.create(WIDTH-500, HEIGHT-100, 'column').setScale(0.2, 0.2).refreshBody();
 
     //player setup
     player = this.physics.add.sprite(100, 450, 'dude');
@@ -145,10 +149,10 @@ function update ()
     
     if (player.body.touching.down)
         {
-            player.setDragX(1000);
+            player.setDragX(1500);
             // canDoubleJump = true
         } else {
-            player.setDragX(100);
+            player.setDragX(1000);
         }
 
     if (!cursors.up.isDown && !cursors.down.isDown)
