@@ -2,7 +2,8 @@ class Player
 {
     //Private Fields
     _player;
-
+    _canDoubleJump;
+    _isFloating;
     constructor (game)
     {
         this._player = game.physics.add.sprite(100, 450, 'urania');
@@ -11,7 +12,8 @@ class Player
         this._player.setCollideWorldBounds(false);
         this._player.setDrag(30);
         this._player.setMaxVelocity(300, 1000);
-
+        this._canDoubleJump = false;
+        this._isFloating = false;
         game.anims.create({
             key: 'float left',
             frames: game.anims.generateFrameNumbers('urania float', {start: 0, end: 1}),
@@ -60,7 +62,7 @@ class Player
         }
         else
         {
-            if (this._player.body.touching.down)
+            if (IsOnSurface())
             {
                 this._player.setAccelerationX(0);
             }
@@ -133,6 +135,11 @@ class Player
         {
             this._player.setVelocityY(750);
         }
+    }
+    
+    IsOnSurface = function()
+    {
+        return this._player.body.touching.down;
     }
 
     Hit = function(otherObject)
