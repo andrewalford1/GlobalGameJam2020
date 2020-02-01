@@ -108,7 +108,7 @@ class Player
             {
                 this._player.anims.play('float left', true);
             }
-            else 
+            else if (player.anims.currentFrame != 0)
             {
                 this._player.anims.play('float right', true); 
             }            
@@ -201,11 +201,9 @@ class Player
         } 
         else 
         {
-            if (this._player.body.velocity.y > 0)
-            {
+            
                 this._player.setGravityY(-200);
                 this._isFloating = true;
-            }
     
         }
     }
