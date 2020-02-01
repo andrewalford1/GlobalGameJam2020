@@ -69,7 +69,7 @@ function create ()
     platforms.create(WIDTH-500, HEIGHT-100, 'column').setScale(0.2, 0.2).refreshBody();
 
     //player setup
-    player = this.physics.add.sprite(100, 450, 'urania');
+    player = this.physics.add.sprite(100, 450, 'urania').setScale(0.5, 0.5).refreshBody();
     player.setScale(1.5);
     player.setBounce(0.1);
     player.setCollideWorldBounds(false);
