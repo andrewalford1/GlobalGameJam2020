@@ -12,6 +12,30 @@ class Player
         this._player.setDrag(30);
         this._player.setMaxVelocity(300, 1000);
 
+        var badVariablePlayer = this._player;
+
+        game.input.keyboard.on('keydown_UP', function(event)
+        {
+            if (badVariablePlayer.body.touching.down)
+            {
+                badVariablePlayer.setVelocityY(-330);
+            } 
+            else 
+            {
+                badVariablePlayer.setGravityY(-250)
+            }
+        });
+        game.input.keyboard.on('keydown_DOWN', function(event) {
+            if (badVariablePlayer.body.touching.down)
+            {
+                badVariablePlayer.setDragX(2000);
+            } 
+            else 
+            {
+                badVariablePlayer.setVelocityY(750);
+            }
+        });
+
         game.anims.create({
             key: 'float left',
             frames: game.anims.generateFrameNumbers('urania float', {start: 0, end: 1}),
@@ -54,32 +78,17 @@ class Player
         {
             this.MoveLeft();
         }
-        
-        if (cursors.right.isDown)
+        else if (cursors.right.isDown)
         {
             this.MoveRight();
         }
-        
-        if (cursors.up.isDown)
+        else
         {
-            this.Jump();
-        }
-
-        if (cursors.down.isDown)
-        {
-            this.Pound();
-        }
-
-        if (!cursors.left.isDown &&
-            !cursors.right.isDown &&
-            !cursors.up.isDown &&
-            !cursors.down.isDown)
+            if (this._player.body.touching.down)
             {
-                if (this._player.body.touching.down)
-                {
-                    this._player.setAccelerationX(0);
-                }
+                this._player.setAccelerationX(0);
             }
+        }
         
         if (this._player.body.touching.down)
         {
@@ -119,30 +128,6 @@ class Player
         } 
 
         this._player.setAccelerationX(200);
-    }
-
-    Jump = function(event)
-    {
-        if (this._player.body.touching.down)
-        {
-            this._player.setVelocityY(-330);
-        } 
-        else 
-        {
-            this._player.setGravityY(-250)
-        }
-    }
-
-    Pound = function()
-    {
-        if (this._player.body.touching.down)
-        {
-            this._player.setDragX(2000);
-        } 
-        else 
-        {
-            this._player.setVelocityY(750);
-        }
     }
 
     Hit = function(otherObject)

@@ -1,12 +1,9 @@
 import GameScene from './scenes/GameScene.js'
 
-const WIDTH = window.innerWidth;
-const HEIGHT = window.innerHeight;
-
 var config = {
     type: Phaser.AUTO,
-    width: WIDTH,
-    height:HEIGHT,
+    width: window.innerWidth,
+    height:window.innerHeight,
     physics: {
         default: 'arcade',
         arcade: {
