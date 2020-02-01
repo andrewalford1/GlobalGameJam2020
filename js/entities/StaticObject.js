@@ -6,7 +6,7 @@ class StaticObject {
         this.y = obj.y;
         this.scaleX = obj.scaleX;
         this.scaleY = obj.scaleY;
-
+        this.isCollidable = obj.isCollidable;
     }
     
     GetName() {
@@ -31,5 +31,9 @@ class StaticObject {
 
     GetScaleY() {
         return this.scaleY;
+    }
+    
+    GetCollidable() {
+        return this.isCollidable;
     }
 }
