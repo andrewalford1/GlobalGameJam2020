@@ -54,17 +54,32 @@ class Player
         {
             this.MoveLeft();
         }
-        else if (cursors.right.isDown)
+        
+        if (cursors.right.isDown)
         {
             this.MoveRight();
         }
-        else
+        
+        if (cursors.up.isDown)
         {
-            if (this._player.body.touching.down)
-            {
-                this._player.setAccelerationX(0);
-            }
+            this.Jump();
         }
+
+        if (cursors.down.isDown)
+        {
+            this.Pound();
+        }
+
+        if (!cursors.left.isDown &&
+            !cursors.right.isDown &&
+            !cursors.up.isDown &&
+            !cursors.down.isDown)
+            {
+                if (this._player.body.touching.down)
+                {
+                    this._player.setAccelerationX(0);
+                }
+            }
         
         if (this._player.body.touching.down)
         {
@@ -106,16 +121,11 @@ class Player
         this._player.setAccelerationX(200);
     }
 
-    Jump = function()
+    Jump = function(event)
     {
         if (this._player.body.touching.down)
         {
             this._player.setVelocityY(-330);
-        } 
-        else if (canDoubleJump) 
-        {
-            this._player.setVelocityY(-330);
-            canDoubleJump = false
         } 
         else 
         {
