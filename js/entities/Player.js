@@ -165,16 +165,16 @@ class Player
         {
             this._player.setVelocityY(-330);
         } 
-        else if (canDoubleJump) 
+        else if (this._canDoubleJump) 
         {
             this._player.setVelocityY(-330);
             this._canDoubleJump = false;
         } 
         else 
         {
-            if (this._player.body.velocity.y < 0)
+            if (this._player.body.velocity.y > 0)
                 {
-            this._player.setGravityY(-250);
+            this._player.setGravityY(-150);
                    this._isFloating = true;
         }
     
