@@ -59,7 +59,7 @@ let staticObjects = [
     new StaticObject({
         name: 'boundaryLeft',
         path: 'assets/img/Column 1.png',
-        x: -250,
+        x: -300,
         y: 400,
         scaleX: 1,
         scaleY:1, 
