@@ -46,7 +46,7 @@ var canDoubleJump = false
 
 function preload ()
 {
-   this.load.image('bg', 'assets/img/sky.png')
+   this.load.image('bg', 'assets/img/Background.png');
    this.load.image('player', 'assets/img/star.png');
    this.load.image('platform', 'assets/img/platform.png');
    this.load.image('bomb', 'assets/img/bomb.png');
@@ -56,7 +56,7 @@ function preload ()
 function create ()
 {
     //bg and platform setup
-    background = this.add.image(0, 0, 'bg').setScale(4);
+    background = this.add.image(0, 0, 'bg').setOrigin(0,0);
     background.setScrollFactor(0);
 
     platforms = this.physics.add.staticGroup();
@@ -145,10 +145,10 @@ function update ()
     
     if (player.body.touching.down)
         {
-            player.setDragX(1000);
+            player.setDragX(1500);
             // canDoubleJump = true
         } else {
-            player.setDragX(100);
+            player.setDragX(1000);
         }
 
     if (!cursors.up.isDown && !cursors.down.isDown)
