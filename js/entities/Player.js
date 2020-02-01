@@ -136,6 +136,17 @@ class Player
         if (!cursors.up.isDown)
             {
                 this._isFloating = false
+                if (!this._player.body.touching.down)
+                {
+                    if (this._player.body.velocity.x < 0)
+            {
+                this._player.anims.play('jump left', true);
+            }
+            else 
+                {
+                    this._player.anims.play('jump right', true);
+                }
+                }
             }
     }
 
