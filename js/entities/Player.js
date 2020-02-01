@@ -68,7 +68,7 @@ class Player
         
         if (this._player.body.touching.down)
         {
-            this._player.anims.play('turn');
+            // this._player.anims.play('turn');
             this._player.setDragX(1500);
         } 
         else 

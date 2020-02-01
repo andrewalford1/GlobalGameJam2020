@@ -47,6 +47,15 @@ let staticObjects = [
         scaleY:2, 
         isCollidable: true   
     }),
+    new StaticObject({
+        name: 'platform',
+        path: 'assets/img/Platforms/Cloud2.png',
+        x: 0,
+        y: 0,
+        scaleX: 0.25,
+        scaleY: 0.25, 
+        isCollidable: true   
+    })
 ]
 
 
