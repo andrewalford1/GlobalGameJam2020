@@ -14,6 +14,56 @@ class Player
         this._player.setMaxVelocity(300, 1000);
         this._canDoubleJump = false;
         this._isFloating = false;
+
+        var badVariablePlayer = this._player;
+        var badVariableIsFloating = this._isFloating;
+        var badVariableIsDoubleJump = this._canDoubleJump;
+
+        game.input.keyboard.on('keydown_UP', function(event)
+        {
+            if (badVariablePlayer.body.touching.down)
+            {
+                badVariablePlayer.setVelocityY(-330);
+                if (badVariablePlayer.body.velocity.x < 0)
+                {
+                    badVariablePlayer.anims.play('jump left', true);
+                }
+                else 
+                    {
+                        badVariablePlayer.anims.play('jump right', true);
+                    }
+            } 
+            else if (badVariableIsDoubleJump) 
+            {
+                badVariablePlayer.setVelocityY(-330);
+                if (badVariablePlayer.body.velocity.x < 0)
+                {
+                    badVariablePlayer.anims.play('jump left', true);
+                }
+                else 
+                    {
+                        badVariablePlayer.anims.play('jump right', true);
+                    }
+                    badVariableIsDoubleJump = false;
+            } 
+            else 
+            {
+                    badVariablePlayer.setGravityY(-200);
+                    badVariableIsFloating = true;
+            }
+        });
+        game.input.keyboard.on('keydown_DOWN', function(event) {
+            if (badVariablePlayer.body.touching.down)
+            {
+                badVariablePlayer.setDragX(2000);
+            } 
+            else 
+            {
+                badVariablePlayer.setVelocityY(750);
+                badVariablePlayer.anims.play('pound', true);
+            }
+        });
+
         game.anims.create({
             key: 'pound',
             frames: game.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
@@ -98,6 +148,10 @@ class Player
             }
                 
             }
+            else
+            {
+                this._player.anims.play('float right', true); 
+            }            
         }
             
         if (this._isFloating)
@@ -194,54 +248,6 @@ class Player
         this._player.setAccelerationX(200);
     }
 
-    Jump = function()
-    {
-        if (this._player.body.touching.down)
-        {
-            this._player.setVelocityY(-330);
-            if (this._player.body.velocity.x < 0)
-            {
-                this._player.anims.play('jump left', true);
-            }
-            else 
-                {
-                    this._player.anims.play('jump right', true);
-                }
-        } 
-        else if (this._canDoubleJump) 
-        {
-            this._player.setVelocityY(-330);
-            if (this._player.body.velocity.x < 0)
-            {
-                this._player.anims.play('jump left', true);
-            }
-            else 
-                {
-                    this._player.anims.play('jump right', true);
-                }
-            this._canDoubleJump = false;
-        } 
-        else 
-        {
-                this._player.setGravityY(-200);
-                this._isFloating = true;
-        }
-    }
-
-    Pound = function()
-    {
-        if (this._player.body.touching.down)
-        {
-            this._player.setDragX(2000);
-        } 
-        else 
-        {
-            this._player.setVelocityY(750);
-            this._player.anims.play('pound', true);
-        }
-    }
-    
-   
     Hit = function(otherObject)
     {
         this._player.setVelocity(0,0);
