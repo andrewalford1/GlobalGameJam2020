@@ -53,7 +53,7 @@ function preload ()
     this.load.image('cloud', 'assets/img/Cloud1.png');
     this.load.image('grass', 'assets/img/Platform1.png');
    this.load.image('bomb', 'assets/img/bomb.png');
-    this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites.png', {frameWidth: 150, frameHeight: 174});
+    this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites.png', {frameWidth: 150, frameHeight: 174}).setScale(0.5, 0.5);
 }
 
 function create ()
@@ -69,7 +69,7 @@ function create ()
     platforms.create(WIDTH-500, HEIGHT-100, 'column').setScale(0.2, 0.2).refreshBody();
 
     //player setup
-    player = this.physics.add.sprite(100, 450, 'urania').setScale(0.5, 0.5).refreshBody();
+    player = this.physics.add.sprite(100, 450, 'urania');
     player.setScale(1.5);
     player.setBounce(0.1);
     player.setCollideWorldBounds(false);
