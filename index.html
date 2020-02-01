@@ -45,6 +45,7 @@ function preload ()
    this.load.image('bg', 'assets/img/sky.png')
    this.load.image('player', 'assets/img/star.png');
    this.load.image('platform', 'assets/img/platform.png');
+    this.load.image('column', 'assets/img/Column1.png');
    this.load.image('bomb', 'assets/img/bomb.png');
 }
 
@@ -57,6 +58,7 @@ function create ()
     platforms.create(400, 568, 'platform').setScale(2).refreshBody();
     platforms.create(350, 400, 'platform');
     platforms.create(200, 300, 'platform');
+    platforms.create(500, 300, 'column');
 
     //player setup
     player = this.physics.add.sprite(50, 300, 'player');
