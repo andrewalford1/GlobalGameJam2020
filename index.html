@@ -14,10 +14,13 @@
 
 <script type="text/javascript">
 
+const WIDTH = window.innerWidth;
+const HEIGHT = window.innerHeight;
+
 var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: WIDTH,
+    height:HEIGHT,
     physics: {
         default: 'arcade',
         arcade: {
@@ -50,12 +53,13 @@ function preload ()
 function create ()
 {
     //bg and platform setup
-    this.add.image(400, 300, 'bg');
+    background = this.add.image(0, 0, 'bg').setScale(4);
+    background.setScrollFactor(0);
 
     platforms = this.physics.add.staticGroup();
-    platforms.create(400, 568, 'platform').setScale(2).refreshBody();
-    platforms.create(350, 400, 'platform');
-    platforms.create(200, 300, 'platform');
+    const ground = platforms.create(400, HEIGHT-30, 'platform').setScale(10, 2).refreshBody();
+    platforms.create(WIDTH-1000, HEIGHT-200, 'platform');
+    platforms.create(WIDTH-300, HEIGHT-300, 'platform');
 
     //player setup
     player = this.physics.add.sprite(50, 300, 'player');
@@ -65,7 +69,7 @@ function create ()
 
     //whataver kills the player things
     bad = this.physics.add.staticGroup();
-    bad.create(350, 370, 'bomb').setScale(2);
+    bad.create(300, HEIGHT-70, 'bomb').setScale(2);
 
     //colliders
     this.physics.add.collider(player, platforms);   
