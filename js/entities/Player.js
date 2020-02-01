@@ -2,7 +2,8 @@ class Player
 {
     //Private Fields
     _player;
-
+    var canDoubleJump = false
+    var isFloating = false
     constructor (game)
     {
         this._player = game.physics.add.sprite(100, 450, 'urania');
@@ -48,6 +49,9 @@ class Player
         }
         else if (this.IsOnSurface())
         {
+            
+            isFloating = false
+            
             if (this._player.body.velocity.x < 0){
                 
                 this._player.anims.play('turn left');
@@ -59,6 +63,23 @@ class Player
                 this._player.anims.play('turn right');
                 
             }
+        }
+        else if (isFloating){
+            if (cursors.left.isDown)
+        {
+           //this._player.anims.play('float left', true);
+        }
+            else if (cursors.rigth.isDown)
+                {
+                   //this._player.anims.play('float right', true); 
+                }
+            else if (this._player.body.velocity.x < 0){
+                //this._player.anims.play('float left', true);
+            }
+            else 
+                {
+                    //this._player.anims.play('float right', true); 
+                }
         }
         
         if (IsOnSurface())
@@ -131,9 +152,17 @@ class Player
         {
             if (this._player.body.velocity.y < 0)
                 {
-                this._player.setGravityY(-200)
+                    this._player.setGravityY(-200);
+                    isFloating = true
                 }
         }
+    }
+    
+    
+    //to be called when UP key is released
+    UpRelease = function()
+    {
+        isFloating = false
     }
 
     Pound = function()
