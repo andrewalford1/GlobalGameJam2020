@@ -15,6 +15,12 @@ class Player
         this._canDoubleJump = false;
         this._isFloating = false;
         game.anims.create({
+            key: 'pound',
+            frames: game.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
+            frameRate: 10,
+            repeat: -1
+        });
+        game.anims.create({
             key: 'float left',
             frames: game.anims.generateFrameNumbers('urania float', {start: 0, end: 1}),
             frameRate: 10,
@@ -231,6 +237,7 @@ class Player
         else 
         {
             this._player.setVelocityY(750);
+            this._player.anims.play('pound', true);
         }
     }
     
