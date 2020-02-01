@@ -4,7 +4,6 @@ class Player
     _player;
     _canDoubleJump;
     _isFloating;
-    _isPounding;
     constructor (game)
     {
         this._player = game.physics.add.sprite(window.innerWidth/2, window.innerHeight/2, 'urania');
@@ -19,11 +18,9 @@ class Player
         var badVariablePlayer = this._player;
         var badVariableIsFloating = this._isFloating;
         var badVariableIsDoubleJump = this._canDoubleJump;
-        var badVariableIsPounding = this._isPounding;
 
         game.input.keyboard.on('keydown_UP', function(event)
         {
-            if (!badVariableIsPounding) {
             if (badVariablePlayer.body.touching.down)
             {
                 badVariablePlayer.setVelocityY(-330);
@@ -54,7 +51,6 @@ class Player
                     badVariablePlayer.setGravityY(-200);
                     badVariableIsFloating = true;
             }
-            }
         });
         game.input.keyboard.on('keydown_DOWN', function(event) {
             if (badVariablePlayer.body.touching.down)
@@ -65,7 +61,6 @@ class Player
             {
                 badVariablePlayer.setVelocityY(750);
                 badVariablePlayer.anims.play('pound', true);
-                badVariableIsPounding = true
             }
         });
 
@@ -187,7 +182,6 @@ class Player
             this._player.setDragX(1500);
             this._isFloating = false;
             this._canDoubleJump = true;
-            this._isPounding = false
         } 
         else 
         {
