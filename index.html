@@ -64,7 +64,6 @@ function create ()
     const ground = platforms.create(400, HEIGHT-30, 'platform').setScale(10, 2).refreshBody();
     platforms.create(WIDTH-1000, HEIGHT-200, 'platform');
     platforms.create(WIDTH-300, HEIGHT-300, 'platform');
-    platforms.create(500, 500, 'column').setScale(0.2, 0.2).refreshBody();
 
     //player setup
     player = this.physics.add.sprite(100, 450, 'dude');
