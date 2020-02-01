@@ -108,7 +108,7 @@ class Player
             {
                 this._player.anims.play('float left', true);
             }
-            else if (player.anims.currentFrame != 0)
+            else if (player.anims.frameRate == 20)
             {
                 this._player.anims.play('float right', true); 
             }            
