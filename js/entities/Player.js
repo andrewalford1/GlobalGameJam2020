@@ -84,7 +84,7 @@ class Player
                 this._player.anims.play('turn left');
                 
             }
-            else if (this._player.body.velocity.x > 0)
+            else
             {
                 
                 this._player.anims.play('turn right');
