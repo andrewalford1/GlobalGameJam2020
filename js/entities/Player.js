@@ -37,19 +37,13 @@ class Player
         {
             this.MoveLeft();
         }
-        else if (cursors.right.isDown)
+        
+        if (cursors.right.isDown)
         {
             this.MoveRight();
         }
-        else
-        {
-            if (this._player.body.touching.down)
-            {
-                this._player.setAccelerationX(0);
-            }
-        }
         
-        if (this._player.body.touching.down)
+        if (IsOnSurface())
         {
             this._player.anims.play('turn');
             this._player.setDragX(1500);
@@ -68,7 +62,7 @@ class Player
     MoveLeft = function()
     {
         this._player.anims.play('left', true);
-        if (this._player.body.touching.down)
+        if (this.IsOnSurface())
         {
             this._player.setAccelerationX(-500);
             return;
@@ -91,7 +85,7 @@ class Player
 
     Jump = function()
     {
-        if (this._player.body.touching.down)
+        if (this.IsOnSurface())
         {
             this._player.setVelocityY(-330);
         } 
@@ -108,14 +102,17 @@ class Player
 
     Pound = function()
     {
-        if (this._player.body.touching.down)
+        if (this.IsOnSurface())
         {
             this._player.setDragX(2000);
+            return;
         } 
-        else 
-        {
-            this._player.setVelocityY(750);
-        }
+        this._player.setVelocityY(750);
+    }
+
+    IsOnSurface()
+    {
+        return this._player.body.touching.down;
     }
 
     Hit(otherObject)
