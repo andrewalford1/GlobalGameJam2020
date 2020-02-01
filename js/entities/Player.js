@@ -2,8 +2,7 @@ class Player
 {
     //Private Fields
     _player;
-    var canDoubleJump = false
-    var isFloating = false
+
     constructor (game)
     {
         this._player = game.physics.add.sprite(100, 450, 'urania');
@@ -59,45 +58,18 @@ class Player
         {
             this.MoveRight();
         }
-        else if (this.IsOnSurface())
+        else
         {
-            
-            isFloating = false
-            
-            if (this._player.body.velocity.x < 0){
-                
-                this._player.anims.play('turn left');
-                
-            }
-            else if (this._player.body.velocity.x > 0)
+            if (this._player.body.touching.down)
             {
-                
-                this._player.anims.play('turn right');
-                
+                this._player.setAccelerationX(0);
             }
-        }
-        else if (isFloating){
-            if (cursors.left.isDown)
-        {
-           this._player.anims.play('float left', true);
-        }
-            else if (cursors.rigth.isDown)
-                {
-                   this._player.anims.play('float right', true); 
-                }
-            else if (this._player.body.velocity.x < 0){
-                this._player.anims.play('float left', true);
-            }
-            else 
-                {
-                    this._player.anims.play('float right', true); 
-                }
         }
         
-        if (IsOnSurface())
+        if (this._player.body.touching.down)
         {
+            this._player.anims.play('turn');
             this._player.setDragX(1500);
-            canDoubleJump = true
         } 
         else 
         {
@@ -112,21 +84,14 @@ class Player
 
     MoveLeft = function()
     {
-        if (this.IsOnSurface())
+        this._player.anims.play('left', true);
+        if (this._player.body.touching.down)
         {
             this._player.setAccelerationX(-500);
-            if (this._player.body.velocity.x < 0){
-                this._player.anims.play('left', true);
-            }
-            else
-            {
-                this._player.anims.play('turn left');
-            }
             return;
         }
 
         this._player.setAccelerationX(-200);
-        this._player.anims.play('turn left');
     }
 
     MoveRight = function()
@@ -135,23 +100,15 @@ class Player
         if (this._player.body.touching.down)
         {
             this._player.setAccelerationX(500);
-            if (this._player.body.velocity.x > 0){
-                this._player.anims.play('right', true);
-            }
-            else
-            {
-                this._player.anims.play('turn right');
-            }
             return;
         } 
 
         this._player.setAccelerationX(200);
-        this._player.anims.play('turn right');
     }
 
     Jump = function()
     {
-        if (this.IsOnSurface())
+        if (this._player.body.touching.down)
         {
             this._player.setVelocityY(-330);
         } 
@@ -162,44 +119,30 @@ class Player
         } 
         else 
         {
-            if (this._player.body.velocity.y < 0)
-                {
-                    this._player.setGravityY(-200);
-                    isFloating = true
-                }
+            this._player.setGravityY(-250)
         }
-    }
-    
-    
-    //to be called when UP key is released
-    UpRelease = function()
-    {
-        isFloating = false
     }
 
     Pound = function()
     {
-        if (this.IsOnSurface())
+        if (this._player.body.touching.down)
         {
             this._player.setDragX(2000);
-            return;
         } 
-        this._player.setVelocityY(750);
+        else 
+        {
+            this._player.setVelocityY(750);
+        }
     }
 
-    IsOnSurface()
-    {
-        return this._player.body.touching.down;
-    }
-
-    Hit(otherObject)
+    Hit = function(otherObject)
     {
         this._player.setVelocity(0,0);
         this._player.setX(50);
         this._player.setY(300);
     }
 
-    Get()
+    Get = function()
     {
         return this._player;
     }
