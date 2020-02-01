@@ -84,7 +84,7 @@ class Player
                 this._player.anims.play('turn left');
                 
             }
-            else if (this._player.anims.frameRate == 10))
+            else if (this._player.anims.frameRate == 10)
             {
                 
                 this._player.anims.play('turn right');
