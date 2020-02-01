@@ -23,6 +23,7 @@ var game = new Phaser.Game(config);
 
 var player;
 var collidable;
+var noncollidable;
 var cursors;
 var bad;
 var canDoubleJump = false;
@@ -73,7 +74,7 @@ function create ()
         )
         .setScale(staticObjects[i].GetScaleX(), staticObjects[i].GetScaleY()).refreshBody();
         } else {
-        this.add.image(
+        noncollidable = this.add.image(
             staticObjects[i].GetX(), 
             staticObjects[i].GetY(), 
             staticObjects[i].GetName()
@@ -81,7 +82,7 @@ function create ()
         .setScale(staticObjects[i].GetScaleX(), staticObjects[i].GetScaleY());
         }
 
-        
+        noncollidable.setScrollFactor(0);
     }
     player = new Player(this);
 
