@@ -19,8 +19,13 @@ class Player
             repeat: -1
         });
         game.anims.create({
-            key: 'turn',
+            key: 'turn left',
             frames: [ { key: 'urania', frame: 4}],
+            frameRate: 20
+        });
+        game.anims.create({
+            key: 'turn right',
+            frames: [ { key: 'urania', frame: 5}],
             frameRate: 20
         });
         game.anims.create({
@@ -36,17 +41,21 @@ class Player
         if (cursors.left.isDown)
         {
             this.MoveLeft();
-        }
-        
-        if (cursors.right.isDown)
+        } else if (cursors.right.isDown)
         {
             this.MoveRight();
+        } else {
+            if (this._player.body.velocity.x < 0){
+            this._player.anims.play('turn left');
+            } else {
+                this._player.anims.play('turn right');
+            }
         }
         
         if (IsOnSurface())
         {
-            this._player.anims.play('turn');
             this._player.setDragX(1500);
+            canDoubleJump = true
         } 
         else 
         {
@@ -61,14 +70,19 @@ class Player
 
     MoveLeft = function()
     {
-        this._player.anims.play('left', true);
         if (this.IsOnSurface())
         {
             this._player.setAccelerationX(-500);
+            if (this._player.body.velocity.x < 0){
+                this._player.anims.play('left', true);
+            } else {
+                this._player.anims.play('turn left');
+            }
             return;
         }
 
         this._player.setAccelerationX(-200);
+        this._player.anims.play('turn left');
     }
 
     MoveRight = function()
@@ -77,10 +91,16 @@ class Player
         if (this._player.body.touching.down)
         {
             this._player.setAccelerationX(500);
+            if (this._player.body.velocity.x > 0){
+                this._player.anims.play('right', true);
+            } else {
+                this._player.anims.play('turn right');
+            }
             return;
         } 
 
         this._player.setAccelerationX(200);
+        this._player.anims.play('turn right');
     }
 
     Jump = function()
@@ -96,7 +116,10 @@ class Player
         } 
         else 
         {
-            this._player.setGravityY(-250)
+            if (this._player.body.velocity.y < 0)
+                {
+                this._player.setGravityY(-200)
+                }
         }
     }
 
