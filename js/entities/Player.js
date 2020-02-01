@@ -62,9 +62,42 @@ class Player
         }
         else
         {
-            if (IsOnSurface())
+            if (this._player.body.touching.down)
             {
                 this._player.setAccelerationX(0);
+                
+                if (this._player.body.velocity.x < 0){
+                
+                this._player.anims.play('turn left');
+                
+            }
+            else if (this._player.body.velocity.x > 0)
+            {
+                
+                this._player.anims.play('turn right');
+                
+            }
+                
+            }
+            else{
+                if (this._isFloating)
+                    {
+                        if (cursors.left.isDown)
+        {
+           this._player.anims.play('float left', true);
+        }
+            else if (cursors.rigth.isDown)
+                {
+                   this._player.anims.play('float right', true); 
+                }
+            else if (this._player.body.velocity.x < 0){
+                this._player.anims.play('float left', true);
+            }
+            else 
+                {
+                    this._player.anims.play('float right', true); 
+                }
+                    }
             }
         }
         
@@ -72,6 +105,8 @@ class Player
         {
             // this._player.anims.play('turn');
             this._player.setDragX(1500);
+            this._isFloating = false;
+            this._canDoubleJump = true;
         } 
         else 
         {
@@ -86,26 +121,42 @@ class Player
 
     MoveLeft = function()
     {
-        this._player.anims.play('left', true);
+        
         if (this._player.body.touching.down)
         {
             this._player.setAccelerationX(-500);
+            if (this._player.body.velocity.x < 0){
+                this._player.anims.play('left', true);
+            }
+            else
+            {
+                this._player.anims.play('turn left');
+            }
             return;
         }
 
         this._player.setAccelerationX(-200);
+         this._player.anims.play('turn left');
     }
 
     MoveRight = function()
     {
-        this._player.anims.play('right', true);
+        
         if (this._player.body.touching.down)
         {
             this._player.setAccelerationX(500);
+            if (this._player.body.velocity.x > 0){
+                this._player.anims.play('right', true);
+            }
+            else
+            {
+                this._player.anims.play('turn right');
+            }
             return;
         } 
 
         this._player.setAccelerationX(200);
+        this._player.anims.play('turn right');
     }
 
     Jump = function()
@@ -117,11 +168,14 @@ class Player
         else if (canDoubleJump) 
         {
             this._player.setVelocityY(-330);
-            canDoubleJump = false
+            this._canDoubleJump = false;
         } 
         else 
         {
-            this._player.setGravityY(-250)
+            if (this._player.body.velocity.y < 0)
+                {
+            this._player.setGravityY(-250);
+                   this._isFloating = true;
         }
     }
 
@@ -137,11 +191,7 @@ class Player
         }
     }
     
-    IsOnSurface = function()
-    {
-        return this._player.body.touching.down;
-    }
-
+   
     Hit = function(otherObject)
     {
         this._player.setVelocity(0,0);
