@@ -53,7 +53,7 @@ function preload ()
     this.load.image('cloud', 'assets/img/Cloud1.png');
     this.load.image('grass', 'assets/img/Platform1.png');
    this.load.image('bomb', 'assets/img/bomb.png');
-    this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites.png', {frameWidth: 150, frameHeight: 174}).setScale(0.5, 0.5);
+    this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites.png', {frameWidth: 150, frameHeight: 174});
 }
 
 function create ()
@@ -159,6 +159,8 @@ function update ()
     {
         player.setGravityY(0);
     }
+    
+    player.setSize(150, 174);
 }
 
 function jump ()
