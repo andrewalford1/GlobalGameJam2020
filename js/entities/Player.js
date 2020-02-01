@@ -177,6 +177,8 @@ class Player
             this._player.setGravityY(-250);
                    this._isFloating = true;
         }
+    
+        }
     }
 
     Pound = function()
