@@ -201,7 +201,7 @@ class Player
         } 
         else 
         {
-                this._player.setGravityY(-150);
+                this._player.setGravityY(-200);
                 this._isFloating = true;
         }
     }
