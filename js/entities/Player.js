@@ -60,6 +60,7 @@ class Player
             frameRate: 10,
             repeat: -1
         });
+        this._player.anims.play('turn left');
     }
 
     Update = function(cursors)
@@ -202,7 +203,7 @@ class Player
         {
             if (this._player.body.velocity.y > 0)
             {
-                this._player.setGravityY(-150);
+                this._player.setGravityY(-200);
                 this._isFloating = true;
             }
     
