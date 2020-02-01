@@ -132,6 +132,11 @@ class Player
         {
             this._player.setGravityY(0);
         }
+        
+        if (!cursors.up.isDown)
+            {
+                this._isFloating = false
+            }
     }
 
     MoveLeft = function()
