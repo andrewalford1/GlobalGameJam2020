@@ -77,7 +77,9 @@ function preload ()
         );
     }
 
-    this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites2.png', {frameWidth: 76, frameHeight: 87});
+    this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites3.png', {frameWidth: 76, frameHeight: 87});
+    this.load.spritesheet('urania jump', 'assets/img/Characters/Urania/UraniaSpritesJump.png', {frameWidth: 76, frameHeight: 87});
+    his.load.spritesheet('urania float', 'assets/img/Characters/Urania/UraniaSprites Float3.png', {frameWidth: 76, frameHeight: 87});
     this.load.audio('bgMusic', 'assets/sfx/bensound-memories.mp3');
 }
 
