@@ -14,6 +14,18 @@ class Player
         this._player.setMaxVelocity(300, 1000);
 
         game.anims.create({
+            key: 'float left',
+            frames: game.anims.generateFrameNumbers('urania float', {start: 0, end: 1}),
+            frameRate: 10,
+            repeat: -1
+        });
+         game.anims.create({
+            key: 'float right',
+            frames: game.anims.generateFrameNumbers('urania float', {start: 2, end: 3}),
+            frameRate: 10,
+            repeat: -1
+        });
+        game.anims.create({
             key: 'left',
             frames: game.anims.generateFrameNumbers('urania', {start: 0, end: 3}),
             frameRate: 10,
@@ -67,18 +79,18 @@ class Player
         else if (isFloating){
             if (cursors.left.isDown)
         {
-           //this._player.anims.play('float left', true);
+           this._player.anims.play('float left', true);
         }
             else if (cursors.rigth.isDown)
                 {
-                   //this._player.anims.play('float right', true); 
+                   this._player.anims.play('float right', true); 
                 }
             else if (this._player.body.velocity.x < 0){
-                //this._player.anims.play('float left', true);
+                this._player.anims.play('float left', true);
             }
             else 
                 {
-                    //this._player.anims.play('float right', true); 
+                    this._player.anims.play('float right', true); 
                 }
         }
         
