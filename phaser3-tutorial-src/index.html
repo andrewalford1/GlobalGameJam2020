@@ -116,6 +116,10 @@
             jump()
         });
 
+        this.input.keyboard.on('keydown_DOWN', function (event) {
+            pound()
+        });
+
         scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
     }
@@ -201,7 +205,7 @@
         }
 
         if (cursors.down.isDown){
-            player.setGravityY(1000)
+           // player.setGravityY(1000)
         } else {
             if (cursors.up.isDown){
                // player.setGravityY(-200)
@@ -222,6 +226,16 @@
             canDoubleJump = false
         } else {
             player.setGravityY(-250)
+        }
+    }
+
+    function pound ()
+    {
+        if (player.body.touching.down)
+        {
+            player.setDragX(1000);
+        } else {
+            player.setVelocityY(750)
         }
     }
 
