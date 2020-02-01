@@ -32,6 +32,7 @@
     var cursors;
     var score = 0;
     var scoreText;
+    var canDoubleJump = false
 
     function preload ()
     {
@@ -59,9 +60,11 @@
 
         player = this.physics.add.sprite(100, 450, 'dude');
 
-        player.setBounce(0.15);
+        player.setBounceX(0.1);
+        player.setBounceY(0.1);
         player.setCollideWorldBounds(true);
         player.setDrag(30)
+        player.setMaxVelocity(300, 1000)
         
         this.anims.create({
             key: 'left',
@@ -108,6 +111,10 @@
         this.physics.add.overlap(player, stars, collectStar, null, this);
 
         cursors = this.input.keyboard.createCursorKeys();
+
+        this.input.keyboard.on('keydown_UP', function (event) {
+            jump()
+        });
 
         scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
@@ -157,9 +164,9 @@
         {
             if (player.body.touching.down)
             {
-                player.setVelocityX(-250)
+                player.setAccelerationX(-500)
             } else {
-                player.setAccelerationX(-50);
+                player.setAccelerationX(-200);
             }
 
             player.anims.play('left', true);
@@ -168,9 +175,9 @@
         {
             if (player.body.touching.down)
             {
-                player.setVelocityX(250)
+                player.setAccelerationX(500)
             } else {
-                player.setAccelerationX(50);
+                player.setAccelerationX(200);
             }
 
             player.anims.play('right', true);
@@ -185,27 +192,37 @@
             player.anims.play('turn');
         }
 
-        if (cursors.up.isDown && player.body.touching.down)
-        {
-            player.setVelocityY(-275);
-        } 
-
         if (player.body.touching.down)
         {
-            player.setDragX(400)
+            player.setDragX(600)
+          //  canDoubleJump = true
         } else {
-            player.setDragX(30)
+            player.setDragX(100)
         }
 
         if (cursors.down.isDown){
-            player.setGravityY(300)
+            player.setGravityY(1000)
         } else {
             if (cursors.up.isDown){
-                player.setGravityY(-200)
+               // player.setGravityY(-200)
+            } else {
+            player.setGravityY(0)
             }
-            player.setGravityY(-100)
     }
 
+    }
+
+    function jump ()
+    {
+        if (player.body.touching.down)
+        {
+            player.setVelocityY(-330);
+        } else if (canDoubleJump) {
+            player.setVelocityY(-330);
+            canDoubleJump = false
+        } else {
+            player.setGravityY(-250)
+        }
     }
 
 </script>
