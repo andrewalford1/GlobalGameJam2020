@@ -55,6 +55,15 @@ let staticObjects = [
         scaleX: 0.25,
         scaleY: 0.25, 
         isCollidable: true   
+    }),
+    new StaticObject({
+        name: 'boundaryLeft',
+        path: 'assets/img/Column 1.png',
+        x: -250,
+        y: 400,
+        scaleX: 1,
+        scaleY:1, 
+        isCollidable: true   
     })
 ]
 
