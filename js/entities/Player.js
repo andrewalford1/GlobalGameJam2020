@@ -79,8 +79,9 @@ class Player
             }
                 
             }
-            else{
-                if (this._isFloating)
+        }
+            
+        if (this._isFloating)
                     {
                         if (cursors.left.isDown)
         {
@@ -98,8 +99,8 @@ class Player
                     this._player.anims.play('float right', true); 
                 }
                     }
-            }
-        }
+            
+        
         
         if (this._player.body.touching.down)
         {
@@ -136,7 +137,6 @@ class Player
         }
 
         this._player.setAccelerationX(-200);
-         this._player.anims.play('turn left');
     }
 
     MoveRight = function()
@@ -156,7 +156,6 @@ class Player
         } 
 
         this._player.setAccelerationX(200);
-        this._player.anims.play('turn right');
     }
 
     Jump = function()
