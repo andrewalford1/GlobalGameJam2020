@@ -41,14 +41,23 @@ class Player
         if (cursors.left.isDown)
         {
             this.MoveLeft();
-        } else if (cursors.right.isDown)
+        }
+        else if (cursors.right.isDown)
         {
             this.MoveRight();
-        } else {
+        }
+        else if (this.IsOnSurface())
+        {
             if (this._player.body.velocity.x < 0){
-            this._player.anims.play('turn left');
-            } else {
+                
+                this._player.anims.play('turn left');
+                
+            }
+            else if (this._player.body.velocity.x > 0)
+            {
+                
                 this._player.anims.play('turn right');
+                
             }
         }
         
@@ -75,7 +84,9 @@ class Player
             this._player.setAccelerationX(-500);
             if (this._player.body.velocity.x < 0){
                 this._player.anims.play('left', true);
-            } else {
+            }
+            else
+            {
                 this._player.anims.play('turn left');
             }
             return;
@@ -93,7 +104,9 @@ class Player
             this._player.setAccelerationX(500);
             if (this._player.body.velocity.x > 0){
                 this._player.anims.play('right', true);
-            } else {
+            }
+            else
+            {
                 this._player.anims.play('turn right');
             }
             return;
