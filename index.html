@@ -64,8 +64,8 @@ function create ()
 
     platforms = this.physics.add.staticGroup();
     const ground = platforms.create(400, HEIGHT-30, 'platform').setScale(10, 2).refreshBody();
-    platforms.create(WIDTH-1000, HEIGHT-200, 'cloud');
-    platforms.create(WIDTH-300, HEIGHT-300, 'grass');
+    platforms.create(WIDTH-1000, HEIGHT-200, 'cloud').setScale(0.2, 0.2).refreshBody();
+    platforms.create(WIDTH-300, HEIGHT-300, 'grass').setScale(0.2, 0.2).refreshBody();
     platforms.create(WIDTH-500, HEIGHT-100, 'column').setScale(0.2, 0.2).refreshBody();
 
     //player setup
