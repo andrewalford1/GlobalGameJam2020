@@ -69,6 +69,7 @@ function preload ()
     }
 
     this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites2.png', {frameWidth: 76, frameHeight: 87});
+    this.load.audio('bgMusic', 'assets/sfx/bensound-memories.mp3');
 }
 
 function create ()
@@ -110,6 +111,13 @@ function create ()
 
     this.cameras.main.setBounds(0,0, 1000000000000000000000000000000, 600);
     this.cameras.main.startFollow(player.Get());
+    
+    //music
+    let bgMusic = this.sound.add('bgMusic');
+    bgMusic.play({
+        volume: 3,
+        loop: true
+    })
 } 
 
 function update ()
