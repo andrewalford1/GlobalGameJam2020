@@ -11,7 +11,7 @@ class StoryScene extends Phaser.Scene {
 		let background = this.add.sprite(0,0,'background_img2')
 		background.setOrigin(0,0);
 
-		var text = this.add.text(100,100, 'Asteria', { fontFamily: '"Uncial Antiqua", cursive' });
+		var text = this.add.text(100,100, 'Asteria').setFont('Verdana, "Times New Roman", Tahoma, serif');
 
 		var text = this.add.text(100,200, 'In the land of Greece', { fontFamily: '"Uncial Antiqua", cursive' });
 		var text = this.add.text(100,220, 'High in the sky', { fontFamily: '"Uncial Antiqua", cursive' });

@@ -2,9 +2,6 @@ import TitleScene from './scenes/TitleScene'
 import StoryScene from './scenes/StoryScene'
 import GameScene from './scenes/GameScene'
 
-let titleScene = new TitleScene();
-let storyScene = new StoryScene();
-let gameScene = new GameScene();
 
 
 var config = {
@@ -18,6 +15,7 @@ var config = {
             debug: false
         }
     },
+    
     /*scene: {
         preload: preload,
         create: create,
@@ -25,20 +23,20 @@ var config = {
     }*/
 };
 
-var player;
-var stars;
-var bombs;
-var platforms;
-var cursors;
-var score = 0;
-var gameOver = false;
-var scoreText;
+
 
 var game = new Phaser.Game(config);
+//window.game = game;
+
+let titleScene = new TitleScene();
+//let storyScene = new StoryScene(); 
+//let gameScene = new GameScene();
+
+
 
 game.scene.add('titleScene', TitleScene);
-game.scene.add('storyScene', StoryScene);
-game.scene.add('gameScene', GameScene);
+//game.scene.add('storyScene', StoryScene);
+//game.scene.add('gameScene', GameScene);
 
 game.scene.start('TitleScene');
 

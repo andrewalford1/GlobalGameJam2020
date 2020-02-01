@@ -1,0 +1,11 @@
+ body {
+			margin: 0;
+			font-size: 400;
+       }
+
+ @font-face {
+    font-family: 'Cinzel';
+    src: url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
+    font-weight: 400;
+    font-weight: normal;
+}
