@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +6,120 @@
     <script src="./js/lib/phaser.js"></script>
     <script src="./js/Create.js"></script>
     <script src="./js/Preload.js"></script>
+=======
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 10</title>
+    <script src="./js/lib/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+>>>>>>> Sylvia_demo
 </head>
-    <script src="./js/Config.js"></script>
+<body>
+
+<script type="text/javascript">
+
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var game = new Phaser.Game(config);
+
+var player;
+var platforms;
+var cursors;
+var bad;
+
+function preload ()
+{
+   this.load.image('bg', 'assets/sky.png')
+   this.load.image('player', 'assets/star.png');
+   this.load.image('platform', 'assets/platform.png');
+   this.load.image('bomb', 'assets/bomb.png');
+}
+
+function create ()
+{
+    //bg and platform setup
+    this.add.image(400, 300, 'bg');
+
+    platforms = this.physics.add.staticGroup();
+    platforms.create(400, 568, 'platform').setScale(2).refreshBody();
+    platforms.create(350, 400, 'platform');
+    platforms.create(200, 300, 'platform');
+
+    //player setup
+    player = this.physics.add.sprite(50, 300, 'player');
+    player.setScale(1.5);
+    player.setBounce(0.2);
+    player.setCollideWorldBounds(true);
+
+    //whataver kills the player things
+    bad = this.physics.add.staticGroup();
+    bad.create(350, 370, 'bomb').setScale(2);
+
+    //colliders
+    this.physics.add.collider(player, platforms);   
+    this.physics.add.collider(player, bad, playerHit, null, this);
+
+    //keys
+    cursors = this.input.keyboard.createCursorKeys();
+
+    //camera
+    this.cameras.main.setBounds(0,0, 900, 600);
+    this.cameras.main.startFollow(player);
+} 
+
+function update ()
+{
+
+    if (cursors.left.isDown)
+    {
+        player.setVelocityX(-160);
+    }
+    else if (cursors.right.isDown)
+    {
+        player.setVelocityX(160);
+    }
+    else
+    {
+        player.setVelocityX(0);
+
+    }
+
+    if (cursors.up.isDown && player.body.touching.down)
+    {
+        player.setVelocityY(-330);
+    }
+}
+
+function playerHit(player, spike) {
+    player.setVelocity(0,0);
+    player.setX(50);
+    player.setY(300);
+}
+
+
+</script>
+
+</body>
 </html>
