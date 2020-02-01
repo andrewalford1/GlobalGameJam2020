@@ -108,7 +108,7 @@ class Player
             {
                 this._player.anims.play('float left', true);
             }
-            else if (player.anims.frameRate == 20)
+            else if (player.anims.frameRate == 10)
             {
                 this._player.anims.play('float right', true); 
             }            
@@ -201,10 +201,8 @@ class Player
         } 
         else 
         {
-            
                 this._player.setGravityY(-200);
                 this._isFloating = true;
-    
         }
     }
 
