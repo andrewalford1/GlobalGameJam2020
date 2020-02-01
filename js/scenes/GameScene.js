@@ -27,7 +27,7 @@ class GameScene extends Phaser.Scene
                 name: 'ground',
                 path: 'assets/img/platform.png',
                 x: 400,
-                y: window.innerHeight - 30,
+                y: window.innerHeight + 30,
                 scaleX: 10,
                 scaleY:2, 
                 isCollidable: true   
