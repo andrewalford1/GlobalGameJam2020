@@ -5,7 +5,7 @@ class Player
 
     constructor (game)
     {
-        this._player = game.physics.add.sprite(100, 450, 'dude');
+        this._player = game.physics.add.sprite(100, 450, 'urania');
         this._player.setScale(1.5);
         this._player.setBounce(0.1);
         this._player.setCollideWorldBounds(false);
@@ -14,18 +14,18 @@ class Player
 
         game.anims.create({
             key: 'left',
-            frames: game.anims.generateFrameNumbers('dude', {start: 0, end: 3}),
+            frames: game.anims.generateFrameNumbers('urania', {start: 0, end: 3}),
             frameRate: 10,
             repeat: -1
         });
         game.anims.create({
             key: 'turn',
-            frames: [ { key: 'dude', frame: 4}],
+            frames: [ { key: 'urania', frame: 4}],
             frameRate: 20
         });
         game.anims.create({
             key: 'right',
-            frames: game.anims.generateFrameNumbers('dude', {start: 5, end: 8 }),
+            frames: game.anims.generateFrameNumbers('urania', {start: 6, end: 9 }),
             frameRate: 10,
             repeat: -1
         });
