@@ -489,7 +489,7 @@ class GameScene extends Phaser.Scene
                 this._collectibleObjects[j].GetX(), 
                 this._collectibleObjects[j].GetY(), 
                 this._collectibleObjects[j].GetName()
-            );
+            ).setScale(this._collectibleObjects[i].GetScaleX(), this._collectibleObjects[i].GetScaleY());
         }
 
         this._player.Create(this);
