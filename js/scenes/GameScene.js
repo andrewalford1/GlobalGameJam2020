@@ -389,7 +389,7 @@ class GameScene extends Phaser.Scene
                 isCollidable: false   
             }),
             new Snake({
-                name: 'snake',
+                name: 'snek',
                 path: 'assets/img/Snek.png',
                 audio: '',
                 x: window.innerWidth / 2,
@@ -536,7 +536,7 @@ class GameScene extends Phaser.Scene
         this.load.spritesheet('urania jump', 'assets/img/Characters/Urania/UraniaSpritesJump2.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania pound', 'assets/img/Characters/Urania/UraniaSpritesPound.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania float', 'assets/img/Characters/Urania/UraniaSprites Float3.png', {frameWidth: 76, frameHeight: 87});
-        this.load.spritesheet('snake', 'assets/img/SnekSprites1.png', {frameWidth: 76, frameHeight: 52});
+        this.load.spritesheet('snake1', 'assets/img/SnekSprites1.png', {frameWidth: 76, frameHeight: 52});
         this.load.audio('bgmusic', 'assets/sfx/bensound-memories.mp3');
     }
 

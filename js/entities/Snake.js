@@ -32,13 +32,13 @@ class Snake extends StaticObject
         gameConfig.add.image(0, 0, super.GetName());
         gameConfig.anims.create({
             key: 'snake left',
-            frames: gameConfig.anims.generateFrameNumbers('snake', {start: 0, end: 5}),
+            frames: gameConfig.anims.generateFrameNumbers('snake1', {start: 0, end: 5}),
             frameRate: 10,
             repeat: -1
         });
         gameConfig.anims.create({
             key: 'snake right',
-            frames: gameConfig.anims.generateFrameNumbers('snake', {start: 6, end: 11}),
+            frames: gameConfig.anims.generateFrameNumbers('snake1', {start: 6, end: 11}),
             frameRate: 10,
             repeat: -1
         });
