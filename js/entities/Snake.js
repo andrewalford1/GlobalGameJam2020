@@ -41,8 +41,6 @@ class Snake extends Npc
 
     Update = function(chatacter)
     {
-        
-        super(character);
     
         if (this._snakeLeft) {
             character.x += -10;
