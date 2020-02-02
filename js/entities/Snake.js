@@ -2,7 +2,7 @@ import Player from './Player.js';
 import StaticObject from './StaticObject.js';
 import Npc from './Npc.js';
 
-class Snake extends Npc
+class Snake extends StaticObject
 {
     //Private Fields
     _leftMax;
@@ -29,7 +29,6 @@ class Snake extends Npc
 
     Create(gameConfig)
     {
-        
         gameConfig.anims.create({
             key: 'snake left',
             frames: gameConfig.anims.generateFrameNumbers('snake', {start: 0, end: 5}),

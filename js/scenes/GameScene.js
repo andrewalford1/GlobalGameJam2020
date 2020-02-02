@@ -512,6 +512,10 @@ class GameScene extends Phaser.Scene
             {
                 this._staticObjects[i].Create(this);
             }
+            if (this._staticObjects[i] instanceof Snake)
+            {
+                this._staticObjects[i].Create(this);
+            }
 
             if(this._staticObjects[i].GetCollidable()==true) {
                 this._collidable.create(
