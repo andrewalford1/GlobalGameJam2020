@@ -2,6 +2,8 @@ class Player
 {
     //Private Fields
     _player;
+    _isFloating;
+    _isPounding;
     constructor (game)
     {
         this._player = game.physics.add.sprite(window.innerWidth/2, window.innerHeight/2, 'urania');
