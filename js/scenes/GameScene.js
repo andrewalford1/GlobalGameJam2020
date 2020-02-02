@@ -443,7 +443,7 @@ class GameScene extends Phaser.Scene
             new Collectible({
                 name: 'star1',
                 path: 'assets/img/star.png',
-                x: 1750,
+                x: 1800,
                 y: 200,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -471,7 +471,7 @@ class GameScene extends Phaser.Scene
                 name: 'star3',
                 path: 'assets/img/star.png',
                 x: 20000,
-                y: 900,
+                y: 1000,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: false 
@@ -770,7 +770,7 @@ class GameScene extends Phaser.Scene
                 this._snekLeft1 = false;
                 this._snek1.anims.play('snake right');
                 }
-        else if (this._snek1.x > this._rightMax)
+        else if (this._snek1.x > this._rightMax1)
             {
                 this._snekLeft1 = true;
                 this._snek1.anims.play('snake left'); 
@@ -781,12 +781,12 @@ class GameScene extends Phaser.Scene
         } else {
             this._snek2.setVelocityX(30);
         }
-         if (this._snek2.x < this._leftMax)
+         if (this._snek2.x < this._leftMax2)
                 {
                 this._snekLeft2 = false;
                 this._snek2.anims.play('snake right');
                 }
-        else if (this._snek2.x > this._rightMax)
+        else if (this._snek2.x > this._rightMax2)
             {
                 this._snekLeft2 = true;
                 this._snek2.anims.play('snake left'); 
@@ -797,12 +797,12 @@ class GameScene extends Phaser.Scene
         } else {
             this._snek3.setVelocityX(30);
         }
-         if (this._snek3.x < this._leftMax)
+         if (this._snek3.x < this._leftMax3)
                 {
                 this._snekLeft3 = false;
                 this._snek3.anims.play('snake right');
                 }
-        else if (this._snek3.x > this._rightMax)
+        else if (this._snek3.x > this._rightMax3)
             {
                 this._snekLeft3 = true;
                 this._snek3.anims.play('snake left'); 
