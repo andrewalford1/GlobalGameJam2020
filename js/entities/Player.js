@@ -67,7 +67,7 @@ class Player
         game.anims.create({
             key: 'pound',
             frames: game.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
-            frameRate: 10,
+            frameRate: 5,
             repeat: -1
         });
         game.anims.create({
