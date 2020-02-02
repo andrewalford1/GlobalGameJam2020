@@ -398,7 +398,7 @@ class GameScene extends Phaser.Scene
             }),
             new Snake({
                 name: 'snake',
-                path: 'assets/img/SnekSprites1.png',
+                path: 'assets/img/Snek.png',
                 audio: '',
                 x: window.innerWidth / 2,
                 y: window.innerHeight / 2,
@@ -573,7 +573,7 @@ class GameScene extends Phaser.Scene
         {
             if (this._staticObjects[i] instanceof Snake)
             {
-                this._staticObjects[i].Update(this);
+                this._staticObjects[i].Update();
             }
         }
     }
