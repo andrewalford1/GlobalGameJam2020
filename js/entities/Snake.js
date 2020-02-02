@@ -9,11 +9,7 @@ class Snake extends Npc
     _rightMax;
     _snakeLeft = true;
     _character;
-    _spawnPoint;
-    _name;
-    _width;
-    _height;
-    _scale;
+  
 
 
     constructor(character)

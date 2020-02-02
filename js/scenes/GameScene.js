@@ -534,7 +534,7 @@ class GameScene extends Phaser.Scene
         this._player.Create(this);
         this._objective = new Objective(this._collectibleObjects.length);
         
-        this._snake.Create();
+        this._snake.Create(this);
     
         //keys
         this._cursors = this.input.keyboard.createCursorKeys();
