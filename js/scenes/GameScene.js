@@ -73,6 +73,24 @@ class GameScene extends Phaser.Scene
                 isCollidable: true   
             }),
             new StaticObject({
+                name: 'platform4',
+                path: 'assets/img/Platforms/Cloud2.png',
+                x: 2000,
+                y: 2000,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform5',
+                path: 'assets/img/Platforms/Grass2.png',
+                x: 3000,
+                y: 1050,
+                scaleX: 0.40,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
+            new StaticObject({
                 name: 'Zeus',
                 path: 'assets/img/Characters/Zeus.png',
                 x: window.innerWidth / 2,
