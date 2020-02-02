@@ -404,7 +404,18 @@ class GameScene extends Phaser.Scene
                 scaleY: 0.2, 
                 isCollidable: false 
             })
-        ]
+        ];
+
+        this._player = new Player({
+            Name: 'urania',
+            SpawnPoint: {
+                X: 200,
+                Y: window.innerWidth / 2
+            },
+            Width: 76,
+            Height: 87,
+            Scale: 1.5
+        });
     }
 
     preload()
@@ -472,7 +483,7 @@ class GameScene extends Phaser.Scene
             );
         }
 
-        this._player = new Player(this);
+        this._player.Create(this);
     
         //keys
         this._cursors = this.input.keyboard.createCursorKeys();

@@ -2,10 +2,31 @@ class Player
 {
     //Private Fields
     _player;
-    constructor (game)
+    _spawnPoint;
+    _name;
+    _width;
+    _height;
+    _scale;
+
+
+    constructor (player)
     {
-        this._player = game.physics.add.sprite(200, window.innerHeight/2, 'urania');
-        this._player.setScale(1.5);
+        this._spawnPoint = player.SpawnPoint;
+        this._name = player.Name;
+        this._width = player.Width;
+        this._height = player.Height;
+        this._scale = player.Scale;
+    }
+
+    Create = function(gameConfig)
+    {
+        this._player = gameConfig.physics.add.sprite(
+            this._spawnPoint.X, 
+            this._spawnPoint.Y, 
+            this._name
+        );
+
+        this._player.setScale(this._scale);
         this._player.setBounce(0.1);
         this._player.setCollideWorldBounds(false);
         this._player.setDrag(30);
@@ -16,7 +37,7 @@ class Player
 
         var badVariablePlayer = this._player;
 
-        game.input.keyboard.on('keydown_UP', function(event)
+        gameConfig.input.keyboard.on('keydown_UP', function(event)
         {
             if (!badVariablePlayer._isPounding) {
             if (badVariablePlayer.body.touching.down)
@@ -51,7 +72,7 @@ class Player
             }
             }
         });
-        game.input.keyboard.on('keydown_DOWN', function(event) {
+        gameConfig.input.keyboard.on('keydown_DOWN', function(event) {
             
             badVariablePlayer._isFloating = false;
             
@@ -67,55 +88,55 @@ class Player
             }
         });
         
-        game.anims.create({
+        gameConfig.anims.create({
             key: 'pound',
-            frames: game.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
+            frames: gameConfig.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
             frameRate: 19,
             repeat: -1
         });
-        game.anims.create({
+        gameConfig.anims.create({
             key: 'float left',
-            frames: game.anims.generateFrameNumbers('urania float', {start: 0, end: 1}),
+            frames: gameConfig.anims.generateFrameNumbers('urania float', {start: 0, end: 1}),
             frameRate: 10,
             repeat: -1
         });
-         game.anims.create({
+        gameConfig.anims.create({
             key: 'float right',
-            frames: game.anims.generateFrameNumbers('urania float', {start: 2, end: 3}),
+            frames: gameConfig.anims.generateFrameNumbers('urania float', {start: 2, end: 3}),
             frameRate: 10,
             repeat: -1
         });
-        game.anims.create({
+        gameConfig.anims.create({
             key: 'jump left',
-            frames: game.anims.generateFrameNumbers('urania jump', {start: 0, end: 1}),
+            frames: gameConfig.anims.generateFrameNumbers('urania jump', {start: 0, end: 1}),
             frameRate: 10,
             repeat: -1
         });
-         game.anims.create({
+        gameConfig.anims.create({
             key: 'jump right',
-            frames: game.anims.generateFrameNumbers('urania jump', {start: 2, end: 3}),
+            frames: gameConfig.anims.generateFrameNumbers('urania jump', {start: 2, end: 3}),
             frameRate: 10,
             repeat: -1
         });
-        game.anims.create({
+        gameConfig.anims.create({
             key: 'left',
-            frames: game.anims.generateFrameNumbers('urania', {start: 0, end: 3}),
+            frames: gameConfig.anims.generateFrameNumbers('urania', {start: 0, end: 3}),
             frameRate: 10,
             repeat: -1
         });
-        game.anims.create({
+        gameConfig.anims.create({
             key: 'turn left',
             frames: [ { key: 'urania', frame: 4}],
             frameRate: 20
         });
-        game.anims.create({
+        gameConfig.anims.create({
             key: 'turn right',
             frames: [ { key: 'urania', frame: 5}],
             frameRate: 20
         });
-        game.anims.create({
+        gameConfig.anims.create({
             key: 'right',
-            frames: game.anims.generateFrameNumbers('urania', {start: 6, end: 9 }),
+            frames: gameConfig.anims.generateFrameNumbers('urania', {start: 6, end: 9 }),
             frameRate: 10,
             repeat: -1
         });
