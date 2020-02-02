@@ -2,10 +2,9 @@ class Player
 {
     //Private Fields
     _player;
-    _isPounding;
     constructor (game)
     {
-        this._player = game.physics.add.sprite(100, window.innerHeight/2, 'urania');
+        this._player = game.physics.add.sprite(200, window.innerHeight/2, 'urania');
         this._player.setScale(1.5);
         this._player.setBounce(0.1);
         this._player.setCollideWorldBounds(false);
@@ -13,11 +12,13 @@ class Player
         this._player.setMaxVelocity(300, 1000);
         this._player._canDoubleJump = false;
         this._player._isFloating = false;
+        this._player._isPounding = false;
 
         var badVariablePlayer = this._player;
 
         game.input.keyboard.on('keydown_UP', function(event)
         {
+            if (!badVariablePlayer._isPounding) {
             if (badVariablePlayer.body.touching.down)
             {
                 badVariablePlayer.setVelocityY(-330);
@@ -48,8 +49,12 @@ class Player
                     badVariablePlayer.setGravityY(-200);
                     badVariablePlayer._isFloating = true;
             }
+            }
         });
         game.input.keyboard.on('keydown_DOWN', function(event) {
+            
+            badVariablePlayer._isFloating = false;
+            
             if (badVariablePlayer.body.touching.down)
             {
                 badVariablePlayer.setDragX(2000);
@@ -58,13 +63,14 @@ class Player
             {
                 badVariablePlayer.setVelocityY(750);
                 badVariablePlayer.anims.play('pound', true);
+                badVariablePlayer._isPounding = true;
             }
         });
         
         game.anims.create({
             key: 'pound',
             frames: game.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
-            frameRate: 10,
+            frameRate: 19,
             repeat: -1
         });
         game.anims.create({
@@ -137,7 +143,7 @@ class Player
                 this._player.anims.play('turn left');
                 
             }
-            else if (this._player.anims.frameRate == 10)
+            else if (this._player.anims.frameRate < 20)
             {
                 
                 this._player.anims.play('turn right');
@@ -175,6 +181,7 @@ class Player
             // this._player.anims.play('turn');
             this._player.setDragX(1500);
             this._player._isFloating = false;
+            this._player._isPounding = false;
             this._player._canDoubleJump = true;
         } 
         else 
@@ -190,7 +197,7 @@ class Player
         if (!cursors.up.isDown)
             {
                 this._player._isFloating = false
-                if (!this._player.body.touching.down)
+                if (!this._player.body.touching.down && !this._player._isPounding)
                 {
                     if (this._player.body.velocity.x < 0)
             {
