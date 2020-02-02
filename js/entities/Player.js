@@ -60,7 +60,7 @@ class Player
             {
                 badVariablePlayer.setVelocityY(750);
                 badVariablePlayer.anims.play('pound', true);
-                badVariablePlayer._isPounding = false;
+                badVariablePlayer._isPounding = true;
             }
         });
         
