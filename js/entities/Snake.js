@@ -45,7 +45,7 @@ class Snake extends Npc
         this._character.anims.play('snake left');
     }
 
-    Update = function()
+    Update = function(cursors)
     {
     
         if (this._snakeLeft) {
