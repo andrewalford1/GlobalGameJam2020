@@ -1,6 +1,7 @@
 import Player from '../entities/Player.js';
 import StaticObject from '../entities/StaticObject.js';
 import Npc from '../entities/Npc.js';
+import Snake from '../entities/Snake.js';
 import Collectible from '../entities/Collectible.js';
 import Objective from '../Objective.js';
 
