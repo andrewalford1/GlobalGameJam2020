@@ -407,7 +407,7 @@ class GameScene extends Phaser.Scene
                 isCollidable: false,
                 leftMax: 100,
                 rightMax: 1000,
-            });
+            })
            
             
             
