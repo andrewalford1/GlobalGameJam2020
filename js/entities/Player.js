@@ -52,6 +52,9 @@ class Player
             }
         });
         game.input.keyboard.on('keydown_DOWN', function(event) {
+            
+            badVariablePlayer._isFloating = false;
+            
             if (badVariablePlayer.body.touching.down)
             {
                 badVariablePlayer.setDragX(2000);
