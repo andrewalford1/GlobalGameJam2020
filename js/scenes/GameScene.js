@@ -77,6 +77,15 @@ class GameScene extends Phaser.Scene
                 name: 'platform4',
                 path: 'assets/img/Platforms/Cloud2.png',
                 x: 2000,
+                y: 650,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform4.1',
+                path: 'assets/img/Platforms/Cloud2.png',
+                x: 500,
                 y: 600,
                 scaleX: 0.20,
                 scaleY: 0.20, 
@@ -145,6 +154,24 @@ class GameScene extends Phaser.Scene
                 scaleY: 0.2, 
                 isCollidable: true   
             }),
+            new StaticObject({
+                name: 'platform11',
+                path: 'assets/img/Platforms/Grass2.png',
+                x: 9500,
+                y: 1050,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform12',
+                path: 'assets/img/Platforms/Cloud2.png',
+                x: 9000,
+                y: 600,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
             new Npc({
                 name: 'Zeus',
                 path: 'assets/img/Characters/Zeus.png',
@@ -155,6 +182,7 @@ class GameScene extends Phaser.Scene
                 scaleY: 1, 
                 isCollidable: false   
             })
+            
             
         ]; 
     }
