@@ -2,6 +2,7 @@ import Player from '../entities/Player.js';
 import StaticObject from '../entities/StaticObject.js';
 import Npc from '../entities/Npc.js';
 import Collectible from '../entities/Collectible.js';
+import Objective from '../Objective.js';
 
 class GameScene extends Phaser.Scene
 {
@@ -15,6 +16,7 @@ class GameScene extends Phaser.Scene
     _canDoubleJump;
     _staticObjects;
     _collectibleObjects;
+    _objective;
 
     constructor() 
     { 
@@ -493,6 +495,7 @@ class GameScene extends Phaser.Scene
         }
 
         this._player.Create(this);
+        this._objective = new Objective(this._collectibleObjects.length);
     
         //keys
         this._cursors = this.input.keyboard.createCursorKeys();
@@ -502,6 +505,11 @@ class GameScene extends Phaser.Scene
         this.physics.add.overlap(this._player.Get(), this._collectible, collectStar, null, this); 
         function collectStar(_player, star) {
             star.disableBody(true, true);
+            this._objective.Collect();
+            this._objective.Update();
+            if(this._objective.IsComplete()) {
+                this.scene.switch('CreditScene');
+            }
         }
     
         this.cameras.main.setBounds(0,0, 1000000000000000000000000000000, 600);
