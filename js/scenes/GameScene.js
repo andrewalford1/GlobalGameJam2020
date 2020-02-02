@@ -656,7 +656,7 @@ class GameScene extends Phaser.Scene
         })
         
         //snake business, move along
-        this._snek = this.physics.add.sprite(500, 1000, 'snake')
+        this._snek = this.physics.add.sprite(1500, 800, 'snake')
         this._snek.setGravity(-300)
         this.anims.create({
             key: 'snake left',
@@ -683,13 +683,13 @@ class GameScene extends Phaser.Scene
                 {
                 this._snekLeft = false;
                 this._snek.anims.play('snake right');
-                    this._snek.setVelocityX(-10);
+                    this._snek.setVelocityX(-30);
                 }
         else if (this._snek.x > this._rightMax)
             {
                 this._snekLeft = true;
                 this._snek.anims.play('snake left');
-                this._snek.setVelocityX(10)
+                this._snek.setVelocityX(30)
             }
         
         this._player.Update(this._cursors)
