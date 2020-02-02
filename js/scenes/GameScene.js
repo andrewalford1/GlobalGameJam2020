@@ -415,8 +415,8 @@ class GameScene extends Phaser.Scene
                 isCollidable: true   
             }),
             new Npc({
-                name: 'Zeus',
-                path: 'assets/img/Characters/Zeus.png',
+                name: 'Selene',
+                path: 'assets/img/Characters/Moon.png',
                 audio: '',
                 x: window.innerWidth / 2,
                 y: window.innerHeight / 2,
