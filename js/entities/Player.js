@@ -254,3 +254,5 @@ class Player
         return this._player;
     }
 }
+
+export default Player;
