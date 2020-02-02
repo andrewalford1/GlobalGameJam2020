@@ -42,9 +42,9 @@ class Snake extends Npc
     Update = function()
     {
         if (this._snakeLeft) {
-            character.setVelocity(-50);
+            character.x += -10;
         } else {
-            character.setVelocity(50);
+            character.x += 10;
         }
          if (character.x < this._leftMax)
                 {
