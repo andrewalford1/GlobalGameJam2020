@@ -394,19 +394,8 @@ class GameScene extends Phaser.Scene
                 scaleX: 1,
                 scaleY: 1, 
                 isCollidable: false   
-            }),
-            new Snake({
-                name: 'snake1',
-                path: 'assets/img/Snek.png',
-                audio: '',
-                x: window.innerWidth / 2,
-                y: window.innerHeight / 2,
-                scaleX: 1,
-                scaleY: 1, 
-                isCollidable: false,
-                leftMax: 100,
-                rightMax: 1000,
             })
+           
             
             
         ]; 
@@ -452,6 +441,19 @@ class GameScene extends Phaser.Scene
                 scaleY: 1,
                 isCollidable: false    
             });
+         this._snake = 
+             new Snake({
+                name: 'snake1',
+                path: 'assets/img/Snek.png',
+                audio: '',
+                x: window.innerWidth / 2,
+                y: window.innerHeight / 2,
+                scaleX: 1,
+                scaleY: 1, 
+                isCollidable: false,
+                leftMax: 100,
+                rightMax: 1000,
+            })
     }
 
     preload()
@@ -565,6 +567,7 @@ class GameScene extends Phaser.Scene
     update()
     {
         this._player.Update(this._cursors);
+        this._snake.Update();
     }
 }
 
