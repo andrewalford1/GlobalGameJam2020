@@ -16,12 +16,19 @@ class GameOverScene extends Phaser.Scene {
 		this.load.image('background_img','assets/img/Background.png');
 		this.load.image('helm_img','assets/img/Helm.png');
 
-	
+		this.load.audio('death', 'assets/sfx/death.wav');
 	}
 
 
 
 	create () {
+		let deathMusic = this.sound.add('death');
+		deathMusic.play({
+		volume: 10,
+		loop: false
+        })
+		
+		
 		let background = this.add.sprite(0,0,'background_img');
 		background.setOrigin(0,0).setAlpha(0.2);
 
