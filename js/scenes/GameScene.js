@@ -1,7 +1,6 @@
 import Player from '../entities/Player.js';
 import StaticObject from '../entities/StaticObject.js';
 import Npc from '../entities/Npc.js';
-import Snake from '../entities/Snake.js';
 import Collectible from '../entities/Collectible.js';
 import Objective from '../Objective.js';
 import Background from '../entities/Background.js';
@@ -19,8 +18,11 @@ class GameScene extends Phaser.Scene
     _collectibleObjects;
     _objective;
     _lava;
-    _snake;
+    _snek;
     _background;
+    _snekLeft;
+    _leftMax;
+    _rightMax;
 
     constructor() 
     { 
@@ -424,25 +426,12 @@ class GameScene extends Phaser.Scene
                 scaleY: 0.2, 
                 isCollidable: false   
             }),
-            new Snake({
-                name: 'snek',
-                path: 'assets/img/Snek.png',
-                audio: '',
-                x: window.innerWidth / 2,
-                y: window.innerHeight / 2,
-                scaleX: 1,
-                scaleY: 1, 
-                isCollidable: false,
-                leftMax: 100,
-                rightMax: 1000,
-            })   
         ]; 
-        this._snake = this._staticObjects[this._staticObjects.length - 1]
         this._collectibleObjects = [
             new Collectible({
                 name: 'star1',
                 path: 'assets/img/star.png',
-                x: 1750,
+                x: 1800,
                 y: 200,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -470,7 +459,7 @@ class GameScene extends Phaser.Scene
                 name: 'star3',
                 path: 'assets/img/star.png',
                 x: 20000,
-                y: 900,
+                y: 1000,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: false 
@@ -582,12 +571,16 @@ class GameScene extends Phaser.Scene
         this.load.spritesheet('urania jump', 'assets/img/Characters/Urania/UraniaSpritesJump2.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania pound', 'assets/img/Characters/Urania/UraniaSpritesPound.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania float', 'assets/img/Characters/Urania/UraniaSprites Float3.png', {frameWidth: 76, frameHeight: 87});
-        this.load.spritesheet('snake1', 'assets/img/SnekSprites1.png', {frameWidth: 76, frameHeight: 52});
+        this.load.spritesheet('snake', 'assets/img/SnekSprites1.png', {frameWidth: 76, frameHeight: 52});
         this.load.audio('bgmusic', 'assets/sfx/bensound-memories.mp3');
+        
     }
 
     create()
     {
+        
+        
+        
         this._collidable = this.physics.add.staticGroup();
         this._nonCollidable = this.physics.add.staticGroup();
         this._collectible = this.physics.add.staticGroup();
@@ -597,7 +590,7 @@ class GameScene extends Phaser.Scene
 
         for(let i = 0; i < this._staticObjects.length; i++) 
         {
-            if (this._staticObjects[i] instanceof Npc || this._staticObjects[i] instanceof Snake)
+            if (this._staticObjects[i] instanceof Npc)
             {
                 this._staticObjects[i].Create(this);
             }
@@ -671,12 +664,59 @@ class GameScene extends Phaser.Scene
             volume: .3,
             loop: true
         })
+        
+        //snake business, move along
+        this._snek = this.physics.add.sprite(1500, 800, 'snake')
+        this._snek.setGravity(-300)
+        this.anims.create({
+            key: 'snake left',
+            frames: this.anims.generateFrameNumbers('snake', {start: 0, end: 5}),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'snake right',
+            frames: this.anims.generateFrameNumbers('snake', {start: 6, end: 11}),
+            frameRate: 10,
+            repeat: -1
+        });
+        this._snek.anims.play('snake left');
+        this._snekLeft = true;
+        this._leftMax = 1000;
+        this._rightMax = 2000;
+        this.physics.add.collider(this._player.Get(), this._snek, snekHit, null, this);
+        function snekHit (player, snek)
+    {
+        if (player._isPounding) {
+            snek.disableBody(true, true);
+        } else {
+            this.scene.switch('GameOverScene');
+        }
+    }
     }
 
+    
+    
     update()
     {
-        this._player.Update(this._cursors);
-        this._snake.Update(this._cursors);
+        //for snakes only
+        if (this._snekLeft) {
+             this._snek.setVelocityX(-30);
+        } else {
+            this._snek.setVelocityX(30);
+        }
+         if (this._snek.x < this._leftMax)
+                {
+                this._snekLeft = false;
+                this._snek.anims.play('snake right');
+                }
+        else if (this._snek.x > this._rightMax)
+            {
+                this._snekLeft = true;
+                this._snek.anims.play('snake left'); 
+            }
+        
+        this._player.Update(this._cursors)
     }
     
 }
