@@ -212,7 +212,7 @@ class GameScene extends Phaser.Scene
                 name: 'platform15',
                 path: 'assets/img/Column 1.png',
                 x: 13000,
-                y: 1100,
+                y: 1050,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: true   
@@ -227,10 +227,37 @@ class GameScene extends Phaser.Scene
                 isCollidable: true   
             }),
             new StaticObject({
+                name: 'platform16.1',
+                path: 'assets/img/Column 1.png',
+                x: 13500,
+                y: 1150,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+            new StaticObject({
                 name: 'platform17',
                 path: 'assets/img/Column 1.png',
                 x: 14000,
                 y: 700,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform17.1',
+                path: 'assets/img/Column 1.png',
+                x: 14000,
+                y: 950,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform17.2',
+                path: 'assets/img/Column 1.png',
+                x: 14000,
+                y: 1200,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: true   
@@ -245,7 +272,16 @@ class GameScene extends Phaser.Scene
                 isCollidable: true   
             }),
             new StaticObject({
-                name: 'platform19',
+                name: 'platform18.1',
+                path: 'assets/img/Column 1.png',
+                x: 14500,
+                y: 750,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform18.2',
                 path: 'assets/img/Column 1.png',
                 x: 14500,
                 y: 1000,
@@ -263,7 +299,15 @@ class GameScene extends Phaser.Scene
                 scaleY: 1, 
                 isCollidable: false   
             })
-            
+            new StaticObject({
+                name: 'platform19',
+                path: 'assets/img/Platforms/Grass2.png',
+                x: 17000,
+                y: 1050,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
             
         ]; 
     }
