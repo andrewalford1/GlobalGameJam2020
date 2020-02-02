@@ -14,6 +14,7 @@ class GameOverScene extends Phaser.Scene {
 
 	preload () {
 		this.load.image('background_img','assets/img/Background.png');
+		this.load.image('helm_img','assets/img/Helm.png');
 
 	
 	}
@@ -21,12 +22,12 @@ class GameOverScene extends Phaser.Scene {
 
 
 	create () {
-		let background = this.add.sprite(0,0,'background_img')
-		background.setOrigin(0,0);
+		let background = this.add.sprite(0,0,'background_img');
+		background.setOrigin(0,0).setAlpha(0.2);
 
 
-
-		
+        this.helm = this.add.sprite(window.innerWidth/2,window.innerHeight/2,'helm_img').setScale(0.1);
+		//this.helm.setOrigin(0,0);
 
 		
 
@@ -56,7 +57,8 @@ update(time, delta) {
 
 	this.counter++;
 
-	
+	this.helm.setScale(0.01 * this.counter);
+	//this.helm.setOrigin(0,0);
 
  	if (this.counter > 150) {
  		this.counter = 0;
