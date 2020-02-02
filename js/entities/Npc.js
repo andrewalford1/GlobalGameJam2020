@@ -1,37 +1,12 @@
 import Player from './Player.js';
+import StaticObject from './StaticObject.js';
 
-class Npc
+class Npc extends StaticObject
 {
-    //Private Fields
-    _npc;
-    _name;
-    _spritePath;
-    _audio;
-    _location;
-    _scale;
-
-    constructor(character, game)
+    constructor(character)
     {
-        this._name = character.Name;
-        this._spritePath = character.SpritePath;
-        this._audio = character.Audio;
-        this._location = character.Location;
-        this._scale = character.Scale;
-     
-        this._npc = game.physics.add.sprite(this._location.X, this._location.Y, this._name);
-        this._npc.setScale(this._scale);
-        this._npc.setBounce(0.1);
-        this._npc.setCollideWorldBounds(false);
-        this._npc.setDrag(30);
-        this._npc.setMaxVelocity(300, 1000);
+        super(character);
     }
-
-    Get = function() { return _npc; }
-    GetName = function() { return this._name; }
-    GetSpritePath = function() { return this._spritePath; }
-    GetAudio = function() { return this._audio; }
-    GetLocation = function() { return this._location; }
-    GetScale = function() { return this._scale; }
 
     Update = function()
     {
@@ -58,4 +33,4 @@ class Npc
     }
 }
 
-export default StaticObject
+export default Npc;

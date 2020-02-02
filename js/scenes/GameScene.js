@@ -1,6 +1,6 @@
 import Player from '../entities/Player.js';
-import Npc from '../entities/Npc.js';
 import StaticObject from '../entities/StaticObject.js';
+import Npc from '../entities/Npc.js';
 
 class GameScene extends Phaser.Scene
 {
@@ -12,7 +12,6 @@ class GameScene extends Phaser.Scene
     _bad;
     _canDoubleJump;
     _staticObjects;
-    _Zeus;
 
     constructor() 
     { 
@@ -72,19 +71,17 @@ class GameScene extends Phaser.Scene
                 scaleX: 0.40,
                 scaleY: 0.20, 
                 isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'Zeus',
+                path: 'assets/img/Characters/Zeus.png',
+                x: window.innerWidth / 2,
+                y: window.innerHeight / 2,
+                scaleX: 1,
+                scaleY: 1, 
+                isCollidable: false   
             })
         ]; 
-
-        this._Zeus = {
-            Name : 'Zeus',
-            SpritePath: 'assets/img/Characters/Zeues.png',
-            Audio: '',
-            Location: {
-                X: 0,
-                Y: 0
-            },
-            Scale: 1
-        }
     }
 
     preload()
