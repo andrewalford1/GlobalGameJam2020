@@ -394,7 +394,7 @@ class GameScene extends Phaser.Scene
             }),
             new Snake({
                 name: 'snake1',
-                path: 'snake',
+                path: 'assets/img/snek.png',
                 audio: '',
                 x: window.innerWidth / 2,
                 y: window.innerHeight / 2,
