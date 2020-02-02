@@ -184,7 +184,7 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform13.1',
                 path: 'assets/img/Platforms/Cloud2.png',
-                x: 11000,
+                x: 10800,
                 y: 550,
                 scaleX: 0.15,
                 scaleY: 0.15, 
