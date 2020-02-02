@@ -32,7 +32,8 @@ class TitleScene extends Phaser.Scene {
                 y: window.innerHeight / 2,
                 scaleX: 1,
                 scaleY:1,
-                isCollidable: false      
+                isCollidable: false,
+                alpha: 0.7      
             }),
 			new StaticObject({
                 name: 'logo',
@@ -41,7 +42,8 @@ class TitleScene extends Phaser.Scene {
                 y: 275,
                 scaleX: 1,
                 scaleY:1,
-                isCollidable: false      
+                isCollidable: false,
+                alpha: 1      
             })
 
 
@@ -81,7 +83,8 @@ class TitleScene extends Phaser.Scene {
                 this._staticObjects[i].GetY(), 
                 this._staticObjects[i].GetName()
             )
-            .setScale(this._staticObjects[i].GetScaleX(), this._staticObjects[i].GetScaleY());
+            .setScale(this._staticObjects[i].GetScaleX(), this._staticObjects[i].GetScaleY())
+            .setAlpha(this._staticObjects[i].GetAlpha());;
             }
     
             this._nonCollidable.setScrollFactor(0);
