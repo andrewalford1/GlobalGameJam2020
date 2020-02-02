@@ -12,7 +12,7 @@ class TitleScene extends Phaser.Scene {
 	}
 
 	preload () {
-		this.load.image('background_img','assets/img/background.png');
+		this.load.image('background_img','assets/img/Background.png');
 
 		this.load.image('star', 'assets/img/star.png');
 
