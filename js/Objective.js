@@ -17,7 +17,7 @@ class Objective
         return this._isComplete;
     }
 
-    update = function()
+    Update = function()
     {
         if (this._numCollected >= this._numTotalToCollect)
         {
@@ -25,9 +25,8 @@ class Objective
         }
     }
 
-    Collect = function(collectable)
+    Collect = function()
     {
-        //TODO: if instance of collectable, remove from game.
 
         this._numCollected++;
     }
