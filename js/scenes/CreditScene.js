@@ -30,7 +30,7 @@ class CreditScene extends Phaser.Scene {
 		
 		this.text_credits = this.add.text(window.innerWidth/2,400, 
 			'CREDITS \n\n' +
-			'Andrew Walford \n\n' +
+			'Andrew Alford \n\n' +
 			'Adam Rodgers \n\n' + 
 			'Sylwia Krupa \n\n' +
 			'Carlos Alvarez \n\n' +
