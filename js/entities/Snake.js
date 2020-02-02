@@ -9,10 +9,24 @@ class Snake extends Npc
     _rightMax;
     _snakeLeft = true;
     _character;
+    _spawnPoint;
+    _name;
+    _width;
+    _height;
+    _scale;
+
 
     constructor(character)
     {
         super(character);
+        
+        this._spawnPoint = character.SpawnPoint;
+        this._name = chatacter.Name;
+        this._width = character.Width;
+        this._height = character.Height;
+        this._scale = character.Scale;
+        
+        
         this._character = character
         if (character.hasOwnProperty('leftMax'))
         {
@@ -26,6 +40,14 @@ class Snake extends Npc
 
     Create(gameConfig)
     {
+        
+        this._character = gameConfig.physics.add.sprite(
+            this._spawnPoint.X, 
+            this._spawnPoint.Y, 
+            this._name
+        );
+        this._character.setGravityY(-300)
+        
         gameConfig.anims.create({
             key: 'snake left',
             frames: gameConfig.anims.generateFrameNumbers('snake', {start: 0, end: 5}),
