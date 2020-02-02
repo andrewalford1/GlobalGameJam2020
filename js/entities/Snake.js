@@ -1,6 +1,6 @@
 import Player from './Player.js';
 import StaticObject from './StaticObject.js';
-import Npc from './NPC.js';
+import Npc from './Npc.js';
 
 class Snake extends Npc
 {
