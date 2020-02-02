@@ -568,25 +568,7 @@ class GameScene extends Phaser.Scene
 
     create()
     {
-        //snake business, move along
-        this._snek = this.physics.add.sprite(500, 1000, 'snake')
-        this._snek.setGravity(-300)
-        this.anims.create({
-            key: 'snake left',
-            frames: gameConfig.anims.generateFrameNumbers('snake', {start: 0, end: 5}),
-            frameRate: 10,
-            repeat: -1
-        });
-        this.anims.create({
-            key: 'snake right',
-            frames: gameConfig.anims.generateFrameNumbers('snake', {start: 6, end: 11}),
-            frameRate: 10,
-            repeat: -1
-        });
-        this._snek.anims.play('snake left');
-        this._snekLeft = true
-        this._leftMax = 100
-        this._rightMax = 1000
+        
         
         
         this._collidable = this.physics.add.staticGroup();
@@ -672,6 +654,26 @@ class GameScene extends Phaser.Scene
             volume: .3,
             loop: true
         })
+        
+        //snake business, move along
+        this._snek = this.physics.add.sprite(500, 1000, 'snake')
+        this._snek.setGravity(-300)
+        this.anims.create({
+            key: 'snake left',
+            frames: this.anims.generateFrameNumbers('snake', {start: 0, end: 5}),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'snake right',
+            frames: this.anims.generateFrameNumbers('snake', {start: 6, end: 11}),
+            frameRate: 10,
+            repeat: -1
+        });
+        this._snek.anims.play('snake left');
+        this._snekLeft = true
+        this._leftMax = 100
+        this._rightMax = 1000
     }
 
     update()
