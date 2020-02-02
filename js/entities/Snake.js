@@ -8,11 +8,12 @@ class Snake extends Npc
     _leftMax;
     _rightMax;
     _snakeLeft = true;
+    _character;
 
     constructor(character)
     {
         super(character);
-
+        this._character = character
         if (character.hasOwnProperty('leftMax'))
         {
             this._leftMax = character.leftMax;
@@ -37,25 +38,26 @@ class Snake extends Npc
             frameRate: 10,
             repeat: -1
         });
+        this._character.anims.play('snake left');
     }
 
-    Update = function(chatacter)
+    Update = function()
     {
     
         if (this._snakeLeft) {
-            character.x += -10;
+            this._character.x += -10;
         } else {
-            character.x += 10;
+            this._character.x += 10;
         }
-         if (character.x < this._leftMax)
+         if (this._character.x < this._leftMax)
                 {
                 this._snakeLeft = false;
-                character.anims.play('snake right');
+                this._character.anims.play('snake right');
                 }
-        else if (character.x > this._rightMax)
+        else if (this._character.x > this._rightMax)
             {
                 this._snakeLeft = true;
-                character.anims.play('snake left');
+                this._character.anims.play('snake left');
             }
     }
 
