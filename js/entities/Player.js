@@ -4,7 +4,7 @@ class Player
     _player;
     constructor (game)
     {
-        this._player = game.physics.add.sprite(100, window.innerHeight/2, 'urania');
+        this._player = game.physics.add.sprite(200, window.innerHeight/2, 'urania');
         this._player.setScale(1.5);
         this._player.setBounce(0.1);
         this._player.setCollideWorldBounds(false);
