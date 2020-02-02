@@ -417,7 +417,7 @@ class GameScene extends Phaser.Scene
                 name: 'star1',
                 path: 'assets/img/star.png',
                 x: 1500,
-                y: 900,
+                y: 200,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: false 
@@ -573,7 +573,7 @@ class GameScene extends Phaser.Scene
         {
             if (this._staticObjects[i] instanceof Snake)
             {
-                this._staticObjects[i].Update();
+                this._staticObjects[i].x += 10;
             }
         }
     }
