@@ -419,7 +419,7 @@ class GameScene extends Phaser.Scene
             Name: 'urania',
             SpawnPoint: {
                 X: 200,
-                Y: window.innerWidth / 2
+                Y: window.innerHeight / 2
             },
             Width: 76,
             Height: 87,
