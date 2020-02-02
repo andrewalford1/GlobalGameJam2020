@@ -90,6 +90,7 @@ class GameScene extends Phaser.Scene
                 scaleY: 0.20, 
                 isCollidable: true   
             }),
+<<<<<<< HEAD
             new StaticObject({
                 name: 'platform6',
                 path: 'assets/img/Platforms/Cloud2.png',
@@ -118,8 +119,12 @@ class GameScene extends Phaser.Scene
                 isCollidable: true   
             }),
             new StaticObject({
+=======
+            new Npc({
+>>>>>>> 5155827381b2ccef07b4849ba6088c1a36cfb7eb
                 name: 'Zeus',
                 path: 'assets/img/Characters/Zeus.png',
+                audio: '',
                 x: window.innerWidth / 2,
                 y: window.innerHeight / 2,
                 scaleX: 1,
@@ -155,6 +160,11 @@ class GameScene extends Phaser.Scene
 
         for(let i = 0; i < this._staticObjects.length; i++) 
         {
+            if (this._staticObjects[i] instanceof Npc)
+            {
+                this._staticObjects[i].Create(this);
+            }
+
             if(this._staticObjects[i].GetCollidable()==true) {
                 this._collidable.create(
                 this._staticObjects[i].GetX(), 
