@@ -587,13 +587,8 @@ class GameScene extends Phaser.Scene
     update()
     {
         this._player.Update(this._cursors);
-        for(let i = 0; i < this._staticObjects.length; i++) 
-        {
-            if (this._staticObjects[i] instanceof Snake)
-            {
-               this._snake = this._staticObjects[i];
-            }
-            this._snake.Update(this._cursors);
+        this._snake = this._staticObjects[this._staticObjects.length - 1]
+        this._snake.Update(this._cursors);
         }
     }
 }
