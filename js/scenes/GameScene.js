@@ -551,11 +551,7 @@ class GameScene extends Phaser.Scene
 
         for(let i = 0; i < this._staticObjects.length; i++) 
         {
-            if (this._staticObjects[i] instanceof Npc)
-            {
-                this._staticObjects[i].Create(this);
-            }
-            if (this._staticObjects[i] instanceof Snake)
+            if (this._staticObjects[i] instanceof Npc || this._staticObjects[i] instanceof Snake)
             {
                 this._staticObjects[i].Create(this);
             }
