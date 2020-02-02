@@ -1,3 +1,6 @@
+import StaticObject from '../entities/StaticObject.js';
+
+
 class TitleScene extends Phaser.Scene {
 	constructor() { 
 		super('TitleScene');
@@ -32,6 +35,8 @@ class TitleScene extends Phaser.Scene {
             })
         ]; 
 
+
+	}
 
 	preload () {
 		for (let i = 0; i < this._staticObjects.length; i++)
