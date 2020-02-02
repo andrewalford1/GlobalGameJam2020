@@ -32,7 +32,7 @@ class Npc extends StaticObject
     OnInteract = function(player)
     {
         //NPCs can only interact with the player.
-        if (typeof(player) !== Player)
+        if (!(player instanceof Player))
         {
             return;
         }

@@ -1,6 +1,7 @@
 import Player from '../entities/Player.js';
 import StaticObject from '../entities/StaticObject.js';
 import Npc from '../entities/Npc.js';
+import Snake from '../entities/Snake.js';
 import Collectible from '../entities/Collectible.js';
 import Objective from '../Objective.js';
 
@@ -11,12 +12,13 @@ class GameScene extends Phaser.Scene
     _collidable;
     _nonCollidable;
     _collectible;
+    _killable;
     _cursors;
-    _bad;
-    _canDoubleJump;
     _staticObjects;
     _collectibleObjects;
     _objective;
+    _lava;
+
 
     constructor() 
     { 
@@ -393,6 +395,7 @@ class GameScene extends Phaser.Scene
                 scaleY: 1, 
                 isCollidable: false   
             })
+           
             
             
         ]; 
@@ -427,6 +430,30 @@ class GameScene extends Phaser.Scene
             Height: 87,
             Scale: 1.5
         });
+        
+        this._lava = 
+            new StaticObject({
+                name: 'lava',
+                path: 'assets/img/platform.png',
+                x: 0,
+                y: 1200,
+                scaleX: 10000000000,
+                scaleY: 1,
+                isCollidable: false    
+            });
+         this._snake = 
+             new Snake({
+                name: 'snake1',
+                path: 'assets/img/Snek.png',
+                audio: '',
+                x: window.innerWidth / 2,
+                y: window.innerHeight / 2,
+                scaleX: 1,
+                scaleY: 1, 
+                isCollidable: false,
+                leftMax: 100,
+                rightMax: 1000,
+            })
     }
 
     preload()
@@ -445,12 +472,12 @@ class GameScene extends Phaser.Scene
                 this._collectibleObjects[j].GetPath()
             );
         }
-
+        this.load.image(this._lava.GetName(), this._lava.GetPath());
         this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites5.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania jump', 'assets/img/Characters/Urania/UraniaSpritesJump2.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania pound', 'assets/img/Characters/Urania/UraniaSpritesPound.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania float', 'assets/img/Characters/Urania/UraniaSprites Float3.png', {frameWidth: 76, frameHeight: 87});
-        
+        this.load.spritesheet('snake', 'assets/img/SnekSprites1.png', {frameWidth: 76, frameHeight: 52});
         this.load.audio('bgmusic', 'assets/sfx/bensound-memories.mp3');
     }
 
@@ -459,6 +486,7 @@ class GameScene extends Phaser.Scene
         this._collidable = this.physics.add.staticGroup();
         this._nonCollidable = this.physics.add.staticGroup();
         this._collectible = this.physics.add.staticGroup();
+        this._killable = this.physics.add.staticGroup();
 
         for(let i = 0; i < this._staticObjects.length; i++) 
         {
@@ -491,8 +519,15 @@ class GameScene extends Phaser.Scene
                 this._collectibleObjects[j].GetX(), 
                 this._collectibleObjects[j].GetY(), 
                 this._collectibleObjects[j].GetName()
-            );
+            ).setScale(this._collectibleObjects[j].GetScaleX(), this._collectibleObjects[j].GetScaleY()).refreshBody();
         }
+        
+        this._killable.create(
+            this._lava.GetX(), 
+            this._lava.GetY(), 
+            this._lava.GetName()
+            ).setScale(this._lava.GetScaleX(), this._lava.GetScaleY()).refreshBody();
+
 
         this._player.Create(this);
         this._objective = new Objective(this._collectibleObjects.length);
@@ -511,6 +546,12 @@ class GameScene extends Phaser.Scene
                 this.scene.switch('CreditScene');
             }
         }
+        
+        this.physics.add.overlap(this._player.Get(), this._killable, killPlayer, null, this);
+        function killPlayer(_player) {
+            _player.disableBody(true, true);
+            this.scene.switch('GameOverScene');
+        } 
     
         this.cameras.main.setBounds(0,0, 1000000000000000000000000000000, 600);
         this.cameras.main.startFollow(this._player.Get());
@@ -526,6 +567,7 @@ class GameScene extends Phaser.Scene
     update()
     {
         this._player.Update(this._cursors);
+        this._snake.Update();
     }
 }
 
