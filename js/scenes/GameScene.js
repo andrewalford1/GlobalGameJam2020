@@ -440,8 +440,8 @@ class GameScene extends Phaser.Scene
             new Collectible({
                 name: 'star2',
                 path: 'assets/img/star.png',
-                x: 10700,
-                y: 900,
+                x: 200,
+                y: 200,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: false 
@@ -449,7 +449,7 @@ class GameScene extends Phaser.Scene
             new Collectible({
                 name: 'star3',
                 path: 'assets/img/star.png',
-                x: 15100,
+                x: 300,
                 y: 200,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -492,8 +492,8 @@ class GameScene extends Phaser.Scene
         this._background = new Background({
             States: [
                 {
-                    Name: 'bg_base',
-                    SpritePath: 'assets/img/Background.png',
+                    Name: 'constellationsMissing',
+                    SpritePath: 'assets/img/background/constellationsMissing.png',
                     Location: {
                         X: window.innerWidth / 2,
                         Y: window.innerHeight / 2
@@ -502,40 +502,40 @@ class GameScene extends Phaser.Scene
                     Height: 1080
                 },
                 {
-                    Name: 'bg_1',
-                    SpritePath: 'assets/img/star.png',
+                    Name: 'coronaComplete',
+                    SpritePath: 'assets/img/background/coronaComplete.png',
                     Location: {
-                        X: window.innerWidth / 2 + 200,
+                        X: window.innerWidth / 2,
                         Y: window.innerHeight / 2
                     },
                     Width: 1920,
                     Height: 1080
                 },
                 {
-                    Name: 'bg_2',
-                    SpritePath: 'assets/img/star.png',
+                    Name: 'vigoComplete',
+                    SpritePath: 'assets/img/background/vigoComplete.png',
                     Location: {
-                        X: window.innerWidth / 2 + 400,
+                        X: window.innerWidth / 2,
                         Y: window.innerHeight / 2
                     },
                     Width: 1920,
                     Height: 1080
                 },
                 {
-                    Name: 'bg_3',
-                    SpritePath: 'assets/img/star.png',
+                    Name: 'andromedaComplete',
+                    SpritePath: 'assets/img/background/andromedaComplete.png',
                     Location: {
-                        X: window.innerWidth / 2 + 600,
+                        X: window.innerWidth / 2,
                         Y: window.innerHeight / 2
                     },
                     Width: 1920,
                     Height: 1080
                 },
                 {
-                    Name: 'bg_4',
-                    SpritePath: 'assets/img/star.png',
+                    Name: 'bearComplete',
+                    SpritePath: 'assets/img/background/bearComplete.png',
                     Location: {
-                        X: window.innerWidth / 2 + 800,
+                        X: window.innerWidth / 2,
                         Y: window.innerHeight / 2
                     },
                     Width: 1920,
