@@ -2,7 +2,6 @@ class Player
 {
     //Private Fields
     _player;
-    _isFloating;
     _isPounding;
     constructor (game)
     {
@@ -13,10 +12,9 @@ class Player
         this._player.setDrag(30);
         this._player.setMaxVelocity(300, 1000);
         this._player._canDoubleJump = false;
-        this._isFloating = false;
+        this._player._isFloating = false;
 
         var badVariablePlayer = this._player;
-        var badVariableIsFloating = this._isFloating;
 
         game.input.keyboard.on('keydown_UP', function(event)
         {
@@ -48,7 +46,7 @@ class Player
             else 
             {
                     badVariablePlayer.setGravityY(-200);
-                    badVariableIsFloating = true;
+                    badVariablePlayer._isFloating = true;
             }
         });
         game.input.keyboard.on('keydown_DOWN', function(event) {
@@ -150,7 +148,7 @@ class Player
                     
         }
             
-        if (this._isFloating)
+        if (this._player._isFloating)
         {
             if (cursors.left.isDown)
             {
@@ -176,7 +174,7 @@ class Player
         {
             // this._player.anims.play('turn');
             this._player.setDragX(1500);
-            this._isFloating = false;
+            this._player._isFloating = false;
             this._player._canDoubleJump = true;
         } 
         else 
@@ -191,7 +189,7 @@ class Player
         
         if (!cursors.up.isDown)
             {
-                this._isFloating = false
+                this._player._isFloating = false
                 if (!this._player.body.touching.down)
                 {
                     if (this._player.body.velocity.x < 0)
