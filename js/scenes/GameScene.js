@@ -210,10 +210,19 @@ class GameScene extends Phaser.Scene
                 scaleY: 0.20, 
                 isCollidable: true   
             }),
+            new StaticObject({
+                name: 'platform15.2',
+                path: 'assets/img/Platforms/Grass2.png',
+                x: 13500,
+                y: 1050,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
              new StaticObject({
                 name: 'platform15.1',
                 path: 'assets/img/Column 1.png',
-                x: 13000,
+                x: 14500,
                 y: 1050,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -222,7 +231,7 @@ class GameScene extends Phaser.Scene
              new StaticObject({
                 name: 'platform16',
                 path: 'assets/img/Column 1.png',
-                x: 13500,
+                x: 14750,
                 y: 900,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -231,7 +240,7 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform16.1',
                 path: 'assets/img/Column 1.png',
-                x: 13500,
+                x: 14750,
                 y: 1150,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -240,7 +249,7 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform17',
                 path: 'assets/img/Column 1.png',
-                x: 14000,
+                x: 15100,
                 y: 700,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -249,7 +258,7 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform17.1',
                 path: 'assets/img/Column 1.png',
-                x: 14000,
+                x: 15100,
                 y: 950,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -258,7 +267,7 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform17.2',
                 path: 'assets/img/Column 1.png',
-                x: 14000,
+                x: 15100,
                 y: 1200,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -267,7 +276,7 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform18',
                 path: 'assets/img/Column 1.png',
-                x: 14500,
+                x: 15600,
                 y: 500,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -276,7 +285,7 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform18.1',
                 path: 'assets/img/Column 1.png',
-                x: 14500,
+                x: 15600,
                 y: 750,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -285,7 +294,7 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform18.2',
                 path: 'assets/img/Column 1.png',
-                x: 14500,
+                x: 15600,
                 y: 1000,
                 scaleX: 0.2,
                 scaleY: 0.2, 
