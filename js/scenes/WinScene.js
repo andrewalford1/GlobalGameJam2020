@@ -16,12 +16,18 @@ class WinScene extends Phaser.Scene {
 		this.load.image('background_img','assets/img/Background.png');
 		this.load.image('zeus_img','assets/img/Characters/Zeus.png');
 
-	
+		this.load.audio('win', 'assets/sfx/Zeus_voiceline.wav');
 	}
 
 
 
 	create () {
+		let winMusic = this.sound.add('win');
+		winMusic.play({
+		volume: 10,
+		loop: false
+        })
+		
 		let background = this.add.sprite(0,0,'background_img');
 		background.setOrigin(0,0).setAlpha(0.2);
 
