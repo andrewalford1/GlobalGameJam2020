@@ -32,6 +32,8 @@ class TitleScene extends Phaser.Scene {
             })
         ]; 
 
+	preload () {
+		this.load.image('background_img','assets/img/Background.png');
 
 	}
 

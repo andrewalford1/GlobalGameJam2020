@@ -1,17 +1,14 @@
-var config = {
+let config = {
     type: Phaser.AUTO,
     width: window.innerWidth,
-    height: window.innerHeight,
+    height:window.innerHeight,
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 200 }
+            gravity: { y: 300 },
+            debug: false
         }
-    },
-    scene: {
-        preload: preload,
-        create: create
     }
 };
 
-var game = new Phaser.Game(config);
+export default config;

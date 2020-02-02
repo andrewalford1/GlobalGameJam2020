@@ -1,3 +1,6 @@
+import Player from '../entities/Player.js';
+import StaticObject from '../entities/StaticObject.js';
+
 class GameScene extends Phaser.Scene
 {
     //Private Fields.
@@ -33,12 +36,30 @@ class GameScene extends Phaser.Scene
                 isCollidable: true   
             }),
             new StaticObject({
-                name: 'platform',
+                name: 'platform1',
+                path: 'assets/img/Platforms/Grass2.png',
+                x: 300,
+                y: 1050,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform2',
                 path: 'assets/img/Platforms/Cloud2.png',
-                x: 0,
-                y: 0,
-                scaleX: 0.25,
-                scaleY: 0.25, 
+                x: 1000,
+                y: 900,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform3',
+                path: 'assets/img/Platforms/Grass2.png',
+                x: 2000,
+                y: 1050,
+                scaleX: 0.40,
+                scaleY: 0.20, 
                 isCollidable: true   
             })
         ]; 
@@ -54,7 +75,7 @@ class GameScene extends Phaser.Scene
             );
         }
 
-        this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites2.png', {frameWidth: 76, frameHeight: 87});
+        this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites5.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania jump', 'assets/img/Characters/Urania/UraniaSpritesJump2.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania pound', 'assets/img/Characters/Urania/UraniaSpritesPound.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania float', 'assets/img/Characters/Urania/UraniaSprites Float3.png', {frameWidth: 76, frameHeight: 87});

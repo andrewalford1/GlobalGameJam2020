@@ -2,25 +2,23 @@ class Player
 {
     //Private Fields
     _player;
-    _canDoubleJump;
-    _isFloating;
     constructor (game)
     {
-        this._player = game.physics.add.sprite(window.innerWidth/2, window.innerHeight/2, 'urania');
+        this._player = game.physics.add.sprite(100, window.innerHeight/2, 'urania');
         this._player.setScale(1.5);
         this._player.setBounce(0.1);
         this._player.setCollideWorldBounds(false);
         this._player.setDrag(30);
         this._player.setMaxVelocity(300, 1000);
-        this._canDoubleJump = false;
-        this._isFloating = false;
+        this._player._canDoubleJump = false;
+        this._player._isFloating = false;
+        this._player._isPounding = false;
 
         var badVariablePlayer = this._player;
-        var badVariableIsFloating = this._isFloating;
-        var badVariableIsDoubleJump = this._canDoubleJump;
 
         game.input.keyboard.on('keydown_UP', function(event)
         {
+            if (!badVariablePlayer._isPounding) {
             if (badVariablePlayer.body.touching.down)
             {
                 badVariablePlayer.setVelocityY(-330);
@@ -33,7 +31,7 @@ class Player
                         badVariablePlayer.anims.play('jump right', true);
                     }
             } 
-            else if (badVariableIsDoubleJump) 
+            else if (badVariablePlayer._canDoubleJump) 
             {
                 badVariablePlayer.setVelocityY(-330);
                 if (badVariablePlayer.body.velocity.x < 0)
@@ -44,12 +42,13 @@ class Player
                     {
                         badVariablePlayer.anims.play('jump right', true);
                     }
-                    badVariableIsDoubleJump = false;
+                    badVariablePlayer._canDoubleJump = false;
             } 
             else 
             {
                     badVariablePlayer.setGravityY(-200);
-                    badVariableIsFloating = true;
+                    badVariablePlayer._isFloating = true;
+            }
             }
         });
         game.input.keyboard.on('keydown_DOWN', function(event) {
@@ -61,13 +60,14 @@ class Player
             {
                 badVariablePlayer.setVelocityY(750);
                 badVariablePlayer.anims.play('pound', true);
+                badVariablePlayer._isPounding = true;
             }
         });
-
+        
         game.anims.create({
             key: 'pound',
             frames: game.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
-            frameRate: 10,
+            frameRate: 19,
             repeat: -1
         });
         game.anims.create({
@@ -140,7 +140,7 @@ class Player
                 this._player.anims.play('turn left');
                 
             }
-            else if (this._player.anims.frameRate == 10)
+            else if (this._player.anims.frameRate < 20)
             {
                 
                 this._player.anims.play('turn right');
@@ -148,13 +148,10 @@ class Player
             }
                 
             }
-            else
-            {
-                this._player.anims.play('float right', true); 
-            }            
+                    
         }
             
-        if (this._isFloating)
+        if (this._player._isFloating)
         {
             if (cursors.left.isDown)
             {
@@ -180,8 +177,9 @@ class Player
         {
             // this._player.anims.play('turn');
             this._player.setDragX(1500);
-            this._isFloating = false;
-            this._canDoubleJump = true;
+            this._player._isFloating = false;
+            this._player._isPounding = false;
+            this._player._canDoubleJump = true;
         } 
         else 
         {
@@ -195,8 +193,8 @@ class Player
         
         if (!cursors.up.isDown)
             {
-                this._isFloating = false
-                if (!this._player.body.touching.down)
+                this._player._isFloating = false
+                if (!this._player.body.touching.down && !this._player._isPounding)
                 {
                     if (this._player.body.velocity.x < 0)
             {
@@ -260,3 +258,5 @@ class Player
         return this._player;
     }
 }
+
+export default Player;
