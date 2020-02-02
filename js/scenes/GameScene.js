@@ -4,6 +4,7 @@ import Npc from '../entities/Npc.js';
 import Snake from '../entities/Snake.js';
 import Collectible from '../entities/Collectible.js';
 import Objective from '../Objective.js';
+import Background from '../entities/Background.js';
 
 class GameScene extends Phaser.Scene
 {
@@ -19,22 +20,13 @@ class GameScene extends Phaser.Scene
     _objective;
     _lava;
     _snake;
-
+    _background;
 
     constructor() 
     { 
         super({ key: 'GameScene' });
 
         this._staticObjects = [
-            new StaticObject({
-                name: 'bg',
-                path: 'assets/img/Background.png',
-                x: window.innerWidth / 2,
-                y: window.innerHeight / 2,
-                scaleX: 1,
-                scaleY:1,
-                isCollidable: false      
-            }),
             new StaticObject({
                 name: 'ground',
                 path: 'assets/img/platform.png',
@@ -471,6 +463,52 @@ class GameScene extends Phaser.Scene
                 isCollidable: false    
             }); 
              
+
+        this._background = new Background({
+            States: [
+                {
+                    Name: 'bg_base',
+                    SpritePath: 'assets/img/Background.png',
+                    Location: {
+                        X: window.innerWidth / 2,
+                        Y: window.innerHeight / 2
+                    },
+                    Width: 1920,
+                    Height: 1080
+                },
+                {
+                    Name: 'bg_2',
+                    SpritePath: 'assets/img/star.png',
+                    Location: {
+                        X: window.innerWidth / 2 + 200,
+                        Y: window.innerHeight / 2
+                    },
+                    Width: 1920,
+                    Height: 1080
+                },
+                {
+                    Name: 'bg_3',
+                    SpritePath: 'assets/img/star.png',
+                    Location: {
+                        X: window.innerWidth / 2 + 400,
+                        Y: window.innerHeight / 2
+                    },
+                    Width: 1920,
+                    Height: 1080
+                },
+                {
+                    Name: 'bg_4',
+                    SpritePath: 'assets/img/star.png',
+                    Location: {
+                        X: window.innerWidth / 2 + 600,
+                        Y: window.innerHeight / 2
+                    },
+                    Width: 1920,
+                    Height: 1080
+                }
+            ],
+            Scale: 1
+        });
     }
 
     preload()
@@ -491,6 +529,9 @@ class GameScene extends Phaser.Scene
         }
         
         this.load.image(this._lava.GetName(), this._lava.GetPath());
+
+        this._background.PreLoad(this);
+
         this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites5.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania jump', 'assets/img/Characters/Urania/UraniaSpritesJump2.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania pound', 'assets/img/Characters/Urania/UraniaSpritesPound.png', {frameWidth: 76, frameHeight: 87});
@@ -505,6 +546,8 @@ class GameScene extends Phaser.Scene
         this._nonCollidable = this.physics.add.staticGroup();
         this._collectible = this.physics.add.staticGroup();
         this._killable = this.physics.add.staticGroup();
+
+        this._background.Create(this);
 
         for(let i = 0; i < this._staticObjects.length; i++) 
         {
@@ -552,7 +595,7 @@ class GameScene extends Phaser.Scene
     
         //keys
         this._cursors = this.input.keyboard.createCursorKeys();
-    
+
         //collisions
         this.physics.add.collider(this._player.Get(), this._collidable);   
         this.physics.add.overlap(this._player.Get(), this._collectible, collectStar, null, this); 
@@ -563,6 +606,7 @@ class GameScene extends Phaser.Scene
             if(this._objective.IsComplete()) {
                 this.scene.switch('CreditScene');
             }
+            this._background.IncrementState();
         }
         
         this.physics.add.overlap(this._player.Get(), this._killable, killPlayer, null, this);
