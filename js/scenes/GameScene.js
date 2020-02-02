@@ -390,6 +390,18 @@ class GameScene extends Phaser.Scene
                 scaleX: 1,
                 scaleY: 1, 
                 isCollidable: false   
+            }),
+            new Snake({
+                name: 'snake1',
+                path: 'snake',
+                audio: '',
+                x: window.innerWidth / 2,
+                y: window.innerHeight / 2,
+                scaleX: 1,
+                scaleY: 1, 
+                isCollidable: false,
+                leftMax: 100,
+                rightMax: 1000,
             })
             
             
