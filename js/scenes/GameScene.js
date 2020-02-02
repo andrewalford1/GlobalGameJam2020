@@ -674,8 +674,18 @@ class GameScene extends Phaser.Scene
         this._snekLeft = true;
         this._leftMax = 1000;
         this._rightMax = 2000;
+        this.physics.add.collider(this._player, this._snek, snekHit, null, this);
     }
 
+    function snekHit (player, snek)
+    {
+        if (player._isPounding) {
+            kill(snek);
+        } else {
+            this.scene.switch('GameOverScene');
+        }
+    }
+    
     update()
     {
         //for snakes only
