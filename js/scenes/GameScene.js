@@ -303,7 +303,7 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform20',
                 path: 'assets/img/Column 1.png',
-                x: 17500,
+                x: 17000,
                 y: 900,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -312,7 +312,25 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform20.1',
                 path: 'assets/img/Column 1.png',
-                x: 17500,
+                x: 17000,
+                y: 1150,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform20.2',
+                path: 'assets/img/Column 1.png',
+                x: 18000,
+                y: 900,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform20.3',
+                path: 'assets/img/Column 1.png',
+                x: 18000,
                 y: 1150,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -329,6 +347,24 @@ class GameScene extends Phaser.Scene
             }),
             new StaticObject({
                 name: 'platform21.1',
+                path: 'assets/img/Platforms/Grass2.png',
+                x: 19000,
+                y: 950,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform21.2',
+                path: 'assets/img/Platforms/Grass2.png',
+                x: 19000,
+                y: 1000,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform21.3',
                 path: 'assets/img/Platforms/Grass2.png',
                 x: 19000,
                 y: 1050,
