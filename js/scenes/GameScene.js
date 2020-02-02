@@ -1,3 +1,5 @@
+import Player from '../entities/Player.js';
+
 class GameScene extends Phaser.Scene
 {
     //Private Fields.
