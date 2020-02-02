@@ -426,7 +426,7 @@ class GameScene extends Phaser.Scene
                 name: 'star2',
                 path: 'assets/img/star.png',
                 x: 10700,
-                y: 900,,
+                y: 900,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: false 
