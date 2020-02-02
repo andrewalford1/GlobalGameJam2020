@@ -105,7 +105,7 @@ update(time, delta) {
 	}
 	clickSpace() {
 			this.counter = 0;
-    		this.scene.switch('MyGame');
+    		this.scene.switch('GameScene');
 	}	
 	clickButtonG() {
     		this.counter = 0;
