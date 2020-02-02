@@ -90,7 +90,6 @@ class GameScene extends Phaser.Scene
                 scaleY: 0.20, 
                 isCollidable: true   
             }),
-<<<<<<< HEAD
             new StaticObject({
                 name: 'platform6',
                 path: 'assets/img/Platforms/Cloud2.png',
@@ -118,10 +117,7 @@ class GameScene extends Phaser.Scene
                 scaleY: 0.2, 
                 isCollidable: true   
             }),
-            new StaticObject({
-=======
             new Npc({
->>>>>>> 5155827381b2ccef07b4849ba6088c1a36cfb7eb
                 name: 'Zeus',
                 path: 'assets/img/Characters/Zeus.png',
                 audio: '',
