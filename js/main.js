@@ -2,20 +2,7 @@ import GameScene from './scenes/GameScene.js'
 import TitleScene from './scenes/TitleScene.js'
 import CreditScene from './scenes/CreditScene.js'
 import GameOverScene from './scenes/GameOverScene.js'
-
-
-var config = {
-    type: Phaser.AUTO,
-    width: window.innerWidth,
-    height:window.innerHeight,
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 300 },
-            debug: false
-        }
-    }
-};
+import config from './Config.js'
 
 var game = new Phaser.Game(config);
 
