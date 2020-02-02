@@ -431,6 +431,15 @@ class GameScene extends Phaser.Scene
                 scaleY: 0.2, 
                 isCollidable: false 
             })
+            new Collectible({
+                name: 'star3',
+                path: 'assets/img/star.png',
+                x: 15100,
+                y: 200,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: false 
+            })
         ];
 
         this._player = new Player({
@@ -573,8 +582,9 @@ class GameScene extends Phaser.Scene
         {
             if (this._staticObjects[i] instanceof Snake)
             {
-                this._staticObjects[i].update(this._cursors);
+               this._snake = this._staticObjects[i];
             }
+            this._snake.Update(this._cursors);
         }
     }
 }
