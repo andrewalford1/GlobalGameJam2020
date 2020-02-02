@@ -416,7 +416,7 @@ class GameScene extends Phaser.Scene
             }),
             new Npc({
                 name: 'Selene',
-                path: 'assets/img/Characters/Moon.png',
+                path: 'assets/img/Moon.png',
                 audio: '',
                 x: window.innerWidth / 2,
                 y: window.innerHeight / 2,
