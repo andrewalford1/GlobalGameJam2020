@@ -586,8 +586,8 @@ class GameScene extends Phaser.Scene
     {
         this._player.Update(this._cursors);
         this._snake.Update(this._cursors);
-        }
     }
+    
 }
 
 export default GameScene;
