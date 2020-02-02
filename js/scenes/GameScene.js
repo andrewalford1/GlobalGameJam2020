@@ -425,8 +425,8 @@ class GameScene extends Phaser.Scene
             new Collectible({
                 name: 'star2',
                 path: 'assets/img/star.png',
-                x: 1550,
-                y: 900,
+                x: 10700,
+                y: 900,,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: false 
