@@ -1,6 +1,7 @@
 import Player from '../entities/Player.js';
 import StaticObject from '../entities/StaticObject.js';
 import Npc from '../entities/Npc.js';
+import Collectible from '../entities/Collectible.js';
 
 class GameScene extends Phaser.Scene
 {
