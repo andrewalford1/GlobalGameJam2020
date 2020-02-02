@@ -18,7 +18,7 @@ class TitleScene extends Phaser.Scene {
 			"High in the sky",
 			"Far above the clouds",
 			"Lies mount Olympus",
-			"The land of the god and their children",
+			"The land of the gods and their children",
 			"Our story follows one of the nine muses",
 			"Children of Zeus and the titan Mnemosyne"
 		]

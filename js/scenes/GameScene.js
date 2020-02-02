@@ -479,9 +479,9 @@ class GameScene extends Phaser.Scene
     
         //collisions
         this.physics.add.collider(this._player.Get(), this._collidable);   
-        this.physics.add.overlap(this._player.Get(), this._collectible, collectStar); 
-        function collectStar() {
-            console.log("ds");
+        this.physics.add.overlap(this._player.Get(), this._collectible, collectStar, null, this); 
+        function collectStar(_player, star) {
+            star.disableBody(true, true);
         }
     
         this.cameras.main.setBounds(0,0, 1000000000000000000000000000000, 600);
