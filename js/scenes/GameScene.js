@@ -18,11 +18,23 @@ class GameScene extends Phaser.Scene
     _collectibleObjects;
     _objective;
     _lava;
-    _snek;
     _background;
+    _snek;
     _snekLeft;
     _leftMax;
     _rightMax;
+     _snek1;
+    _snekLeft1;
+    _leftMax1;
+    _rightMax1;
+     _snek2;
+    _snekLeft2;
+    _leftMax2;
+    _rightMax2;
+     _snek3;
+    _snekLeft3;
+    _leftMax3;
+    _rightMax3;
 
     constructor() 
     { 
@@ -686,6 +698,30 @@ class GameScene extends Phaser.Scene
         this._leftMax = 12750;
         this._rightMax = 13250;
         this.physics.add.collider(this._player.Get(), this._snek, snekHit, null, this);
+        
+        this._snek1 = this.physics.add.sprite(16000, 950, 'snake')
+        this._snek1.setGravity(-300)
+        this._snek1.anims.play('snake left');
+        this._snekLeft1 = true;
+        this._leftMax1 = 15750;
+        this._rightMax1 = 16250;
+        this.physics.add.collider(this._player.Get(), this._snek1, snekHit, null, this);
+        
+        this._snek2 = this.physics.add.sprite(19000, 850, 'snake')
+        this._snek2.setGravity(-300)
+        this._snek2.anims.play('snake left');
+        this._snekLeft2 = true;
+        this._leftMax2 = 18750;
+        this._rightMax2 = 19250;
+        this.physics.add.collider(this._player.Get(), this._snek2, snekHit, null, this);
+        
+        this._snek3 = this.physics.add.sprite(19000, 850, 'snake')
+        this._snek3.setGravity(-300)
+        this._snek3.anims.play('snake right');
+        this._snekLeft3 = false;
+        this._leftMax3 = 18750;
+        this._rightMax3 = 19250;
+        this.physics.add.collider(this._player.Get(), this._snek3, snekHit, null, this);
         function snekHit (player, snek)
     {
         if (player._isPounding) {
@@ -716,6 +752,55 @@ class GameScene extends Phaser.Scene
                 this._snekLeft = true;
                 this._snek.anims.play('snake left'); 
             }
+        
+        if (this._snekLeft1) {
+             this._snek1.setVelocityX(-30);
+        } else {
+            this._snek1.setVelocityX(30);
+        }
+         if (this._snek1.x < this._leftMax1)
+                {
+                this._snekLeft1 = false;
+                this._snek1.anims.play('snake right');
+                }
+        else if (this._snek1.x > this._rightMax)
+            {
+                this._snekLeft1 = true;
+                this._snek1.anims.play('snake left'); 
+            }
+        
+        if (this._snekLeft2) {
+             this._snek2.setVelocityX(-30);
+        } else {
+            this._snek2.setVelocityX(30);
+        }
+         if (this._snek2.x < this._leftMax)
+                {
+                this._snekLeft2 = false;
+                this._snek2.anims.play('snake right');
+                }
+        else if (this._snek2.x > this._rightMax)
+            {
+                this._snekLeft2 = true;
+                this._snek2.anims.play('snake left'); 
+            }
+        
+        if (this._snekLeft3) {
+             this._snek3.setVelocityX(-30);
+        } else {
+            this._snek3.setVelocityX(30);
+        }
+         if (this._snek3.x < this._leftMax)
+                {
+                this._snekLeft3 = false;
+                this._snek3.anims.play('snake right');
+                }
+        else if (this._snek3.x > this._rightMax)
+            {
+                this._snekLeft3 = true;
+                this._snek3.anims.play('snake left'); 
+            }
+        
         
         this._player.Update(this._cursors)
     }
