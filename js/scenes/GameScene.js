@@ -420,20 +420,10 @@ class GameScene extends Phaser.Scene
         });
 
         this._background = new Background({
-            Base: {
-                Name: 'bg_base',
-                SpritePath: 'assets/img/Background.png',
-                Location: {
-                    X: window.innerWidth / 2,
-                    Y: window.innerHeight / 2
-                },
-                Width: 1920,
-                Height: 1080
-            },
             States: [
                 {
-                    Name: 'bg_1',
-                    SpritePath: 'assets/img/star.png',
+                    Name: 'bg_base',
+                    SpritePath: 'assets/img/Background.png',
                     Location: {
                         X: window.innerWidth / 2,
                         Y: window.innerHeight / 2
@@ -549,12 +539,13 @@ class GameScene extends Phaser.Scene
     
         //keys
         this._cursors = this.input.keyboard.createCursorKeys();
-    
+
         //collisions
         this.physics.add.collider(this._player.Get(), this._collidable);   
         this.physics.add.overlap(this._player.Get(), this._collectible, collectStar, null, this); 
         function collectStar(_player, star) {
             star.disableBody(true, true);
+            this._background.IncrementState();
         }
     
         this.cameras.main.setBounds(0,0, 1000000000000000000000000000000, 600);
