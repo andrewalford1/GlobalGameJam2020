@@ -20,7 +20,8 @@ class TitleScene extends Phaser.Scene {
 			"Lies mount Olympus",
 			"The land of the gods and their children",
 			"Our story follows one of the nine muses",
-			"Children of Zeus and the titan Mnemosyne"
+			"Urania, child of Zeus and the titan Mnemosyne",
+			"On a mission to repair the constellations",
 		]
 
 		this._staticObjects = [
@@ -82,12 +83,15 @@ class TitleScene extends Phaser.Scene {
 
 		//this.storytext_1 = this.add.text(300,(300+lineHeight), 'In the land of Greece', { fontFamily:  'helvetica', padding: 20 }).setFontSize(40).setStroke("black",20).setVisible(0)
 		//this.storytext_2 = this.add.text(300,(300+(2*lineHeight)), 'High in the sky', { fontFamily: 'helvetica' , padding: 20 }).setFontSize(40).setStroke("black",20).setVisible(0);
-		this.storytext_1 = this.styleText(this.story[0], this.base-500);
-		this.storytext_2 = this.styleText(this.story[1], this.base-450);
-		this.storytext_3 = this.styleText(this.story[2], this.base-400);
-		this.storytext_4 = this.styleText(this.story[3], this.base-350);
-		this.storytext_5 = this.styleText(this.story[4], this.base-300);
-		this.storytext_6 = this.styleText(this.story[5], this.base-250);
+		this.storytext_1 = this.styleText(this.story[0], this.base-550);
+		this.storytext_2 = this.styleText(this.story[1], this.base-500);
+		this.storytext_3 = this.styleText(this.story[2], this.base-450);
+		this.storytext_4 = this.styleText(this.story[3], this.base-400);
+		this.storytext_5 = this.styleText(this.story[4], this.base-350);
+		this.storytext_6 = this.styleText(this.story[5], this.base-300);
+		this.storytext_7 = this.styleText(this.story[6], this.base-250);
+		this.storytext_8 = this.styleText(this.story[7], this.base-200);
+
 
 		this.text_start = this.add.text(window.innerWidth/2,this.base-95, 'Press Spacebar').setFontSize(100).setBackgroundColor("black").setVisible(0).setOrigin(0.5);
 		this.text_credits = this.add.text(window.innerWidth/2,this.base-20, 'Press c for credits, space to start').setFontSize(40).setBackgroundColor("black").setOrigin(0.5);
@@ -121,6 +125,9 @@ class TitleScene extends Phaser.Scene {
 			this.storytext_4.setVisible(0);
 			this.storytext_5.setVisible(0);
 			this.storytext_6.setVisible(0);
+			this.storytext_7.setVisible(0);
+			this.storytext_8.setVisible(0);
+
 		}
 
 		if (this.counter > 25) {
@@ -141,9 +148,16 @@ class TitleScene extends Phaser.Scene {
 		if (this.counter > 150) {
 			this.storytext_6.setVisible(1);
 		} 
-			if (this.counter > 200) {
+		if (this.counter > 175) {
+			this.storytext_7.setVisible(1);
+		} 
+		if (this.counter > 200) {
+			this.storytext_8.setVisible(1);
+		} 
+		if (this.counter > 250) {
 			this.text_start.setVisible(1).setAlpha(1).setTint(0x55FFFF,0xFF55FF,0xFFFF11,0x55FFFF);
 		} 
+
 
 	 	if (this.counter > 600) {
 	 		this.counter = 0;
