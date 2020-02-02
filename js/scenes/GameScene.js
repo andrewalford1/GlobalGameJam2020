@@ -36,6 +36,15 @@ class GameScene extends Phaser.Scene
                 isCollidable: true   
             }),
             new StaticObject({
+                name: 'boundary',
+                path: 'assets/img/Column 1.png',
+                x: -300,
+                y:400,
+                scaleX: 1,
+                scaleY:1, 
+                isCollidable: true   
+            }),
+            new StaticObject({
                 name: 'platform1',
                 path: 'assets/img/Platforms/Grass2.png',
                 x: 300,
