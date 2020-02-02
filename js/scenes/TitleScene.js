@@ -102,6 +102,8 @@ class TitleScene extends Phaser.Scene {
 		this.input.keyboard.on('keydown_SPACE', () => this.clickSpace());
 		this.input.keyboard.on('keydown_C', () => this.clickButtonC());
 		this.input.keyboard.on('keydown_G', () => this.clickButtonG());
+		this.input.keyboard.on('keydown_W', () => this.clickButtonW());
+
  	}
 
  	styleText(t,y) {
@@ -180,6 +182,10 @@ class TitleScene extends Phaser.Scene {
 	clickButtonG() {
     		this.counter = 0;
     		this.scene.switch('GameOverScene');
+	}
+	clickButtonW() {
+    		this.counter = 0;
+    		this.scene.switch('WinScene');
 	}
 }
 
