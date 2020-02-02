@@ -67,12 +67,12 @@ class Snake extends Npc
         }
     }
 
-    if (Player._isPounding) {
+ /*    if (Player._isPounding) {
         //kill snake
     } else {
         //game over
     }
-    
+   */ 
    
 }
 
