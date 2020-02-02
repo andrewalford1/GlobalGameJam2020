@@ -18,6 +18,7 @@ class GameScene extends Phaser.Scene
     _collectibleObjects;
     _objective;
     _lava;
+    _snake;
 
 
     constructor() 
@@ -443,8 +444,8 @@ class GameScene extends Phaser.Scene
             });
          this._snake = 
              new Snake({
-                name: 'snake1',
-                path: 'assets/img/Snek.png',
+                name: 'snake',
+                path: 'assets/img/SnekSprites1.png',
                 audio: '',
                 x: window.innerWidth / 2,
                 y: window.innerHeight / 2,
@@ -472,6 +473,7 @@ class GameScene extends Phaser.Scene
                 this._collectibleObjects[j].GetPath()
             );
         }
+        
         this.load.image(this._lava.GetName(), this._lava.GetPath());
         this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites5.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania jump', 'assets/img/Characters/Urania/UraniaSpritesJump2.png', {frameWidth: 76, frameHeight: 87});
@@ -531,6 +533,8 @@ class GameScene extends Phaser.Scene
 
         this._player.Create(this);
         this._objective = new Objective(this._collectibleObjects.length);
+        
+        this._snake.Create();
     
         //keys
         this._cursors = this.input.keyboard.createCursorKeys();

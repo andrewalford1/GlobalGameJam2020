@@ -20,9 +20,6 @@ class Snake extends Npc
     {
         super(character);
         
-       
-        
-        
         this._character = character
         if (character.hasOwnProperty('leftMax'))
         {
@@ -36,9 +33,6 @@ class Snake extends Npc
 
     Create(gameConfig)
     {
-        
-        
-        this._character.setGravityY(-300)
         
         gameConfig.anims.create({
             key: 'snake left',
