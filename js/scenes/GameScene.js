@@ -671,26 +671,28 @@ class GameScene extends Phaser.Scene
             repeat: -1
         });
         this._snek.anims.play('snake left');
-        this._snek.setVelocityX(-30)
-        this._snekLeft = true
-        this._leftMax = 1000
-        this._rightMax = 2000
+        this._snekLeft = true;
+        this._leftMax = 1000;
+        this._rightMax = 2000;
     }
 
     update()
     {
         //for snakes only
+        if (this._snekLeft) {
+             this._snek.setVelocityX(-30);
+        } else {
+            this._snek.setVelocityX(30);
+        }
          if (this._snek.x < this._leftMax)
                 {
                 this._snekLeft = false;
                 this._snek.anims.play('snake right');
-                this._snek.setVelocityX(30);
                 }
         else if (this._snek.x > this._rightMax)
             {
                 this._snekLeft = true;
-                this._snek.anims.play('snake left');
-                this._snek.setVelocityX(-30)
+                this._snek.anims.play('snake left'); 
             }
         
         this._player.Update(this._cursors)
