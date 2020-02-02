@@ -208,6 +208,51 @@ class GameScene extends Phaser.Scene
                 scaleY: 0.20, 
                 isCollidable: true   
             }),
+             new StaticObject({
+                name: 'platform15',
+                path: 'assets/img/Column 1.png',
+                x: 13000,
+                y: 1100,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+             new StaticObject({
+                name: 'platform16',
+                path: 'assets/img/Column 1.png',
+                x: 13500,
+                y: 900,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform17',
+                path: 'assets/img/Column 1.png',
+                x: 14000,
+                y: 700,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform18',
+                path: 'assets/img/Column 1.png',
+                x: 14500,
+                y: 500,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform19',
+                path: 'assets/img/Column 1.png',
+                x: 14500,
+                y: 1000,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
             new Npc({
                 name: 'Zeus',
                 path: 'assets/img/Characters/Zeus.png',
