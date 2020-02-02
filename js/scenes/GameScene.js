@@ -431,7 +431,7 @@ class GameScene extends Phaser.Scene
             new Collectible({
                 name: 'star1',
                 path: 'assets/img/star.png',
-                x: 1750,
+                x: 1800,
                 y: 200,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -440,8 +440,8 @@ class GameScene extends Phaser.Scene
             new Collectible({
                 name: 'star2',
                 path: 'assets/img/star.png',
-                x: 10700,
-                y: 900,
+                x: 200,
+                y: 200,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: false 
@@ -449,7 +449,7 @@ class GameScene extends Phaser.Scene
             new Collectible({
                 name: 'star3',
                 path: 'assets/img/star.png',
-                x: 15100,
+                x: 300,
                 y: 200,
                 scaleX: 0.2,
                 scaleY: 0.2, 
@@ -459,7 +459,7 @@ class GameScene extends Phaser.Scene
                 name: 'star3',
                 path: 'assets/img/star.png',
                 x: 20000,
-                y: 900,
+                y: 1000,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: false 
@@ -643,7 +643,8 @@ class GameScene extends Phaser.Scene
             this._objective.Collect();
             this._objective.Update();
             if(this._objective.IsComplete()) {
-                this.scene.switch('CreditScene');
+                bgmusic.stop();
+                this.scene.switch('WinScene');
             }
             this._background.IncrementState();
         }
