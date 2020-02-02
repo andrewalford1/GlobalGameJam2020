@@ -678,7 +678,7 @@ class GameScene extends Phaser.Scene
         function snekHit (player, snek)
     {
         if (player._isPounding) {
-            kill(snek);
+            snek.disableBody(true, true);
         } else {
             this.scene.switch('GameOverScene');
         }
