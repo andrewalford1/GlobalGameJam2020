@@ -37,3 +37,5 @@ class StaticObject {
         return this.isCollidable;
     }
 }
+
+export default StaticObject; 
