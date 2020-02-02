@@ -13,7 +13,7 @@ class GameOverScene extends Phaser.Scene {
 
 
 	preload () {
-		this.load.image('background_img','assets/img/background.png');
+		this.load.image('background_img','assets/img/Background.png');
 
 	
 	}
@@ -30,7 +30,7 @@ class GameOverScene extends Phaser.Scene {
 
 		
 
-		this.title_text = this.add.text(200,400, 'Game Over').setFont('cursive').setFontSize(200).setTint(0x55FFFF,0xFF55FF,0xFFFF11,0x55FFFF).setStroke("black",40).setShadow(30,30);
+		this.title_text = this.add.text(window.innerWidth/2,window.innerHeight/2, 'Game Over').setFont('helvetica').setFontSize(200).setTint(0x55FFFF,0xFF55FF,0xFFFF11,0x55FFFF).setStroke("black",40).setShadow(30,30).setOrigin(0.5);
 
 
 

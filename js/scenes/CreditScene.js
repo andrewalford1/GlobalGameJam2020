@@ -12,7 +12,7 @@ class CreditScene extends Phaser.Scene {
 
 
 	preload () {
-		this.load.image('background_img2','assets/img/background.png');
+		this.load.image('background_img2','assets/img/Background.png');
 
 		
 
@@ -28,7 +28,7 @@ class CreditScene extends Phaser.Scene {
 		background.setOrigin(0,0);
 		
 		
-		this.text_credits = this.add.text(400,400, 
+		this.text_credits = this.add.text(window.innerWidth/2,400, 
 			'CREDITS \n\n' +
 			'Andrew Walford \n\n' +
 			'Adam Rodgers \n\n' + 
@@ -38,7 +38,7 @@ class CreditScene extends Phaser.Scene {
 			'Gaëtane Yvonnou \n\n' +
 			'John Rooksby \n\n\n' +
 			'Global Game Jam 2020',
-			{ fontFamily: '"Uncial Antiqua", cursive', padding: 40, height: 50 }).setFontSize(30).setBackgroundColor("black");
+			{ fontFamily: 'helvetica', padding: 40, height: 50 }).setFontSize(30).setBackgroundColor("black").setOrigin(0.5);
 		
 		//this.text_credits = this.add.text(100,(300+lineHeight), 'CREDITS', { fontFamily: '"Uncial Antiqua", cursive' }).setFontSize(30).setBackgroundColor("black");
 
