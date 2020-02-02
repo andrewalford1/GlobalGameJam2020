@@ -459,7 +459,7 @@ class GameScene extends Phaser.Scene
                 name: 'star3',
                 path: 'assets/img/star.png',
                 x: 20000,
-                y: 900,
+                y: 1000,
                 scaleX: 0.2,
                 scaleY: 0.2, 
                 isCollidable: false 
@@ -666,7 +666,7 @@ class GameScene extends Phaser.Scene
         })
         
         //snake business, move along
-        this._snek = this.physics.add.sprite(1500, 800, 'snake')
+        this._snek = this.physics.add.sprite(13000, 950, 'snake')
         this._snek.setGravity(-300)
         this.anims.create({
             key: 'snake left',
@@ -682,8 +682,8 @@ class GameScene extends Phaser.Scene
         });
         this._snek.anims.play('snake left');
         this._snekLeft = true;
-        this._leftMax = 1000;
-        this._rightMax = 2000;
+        this._leftMax = 12750;
+        this._rightMax = 13250;
         this.physics.add.collider(this._player.Get(), this._snek, snekHit, null, this);
         function snekHit (player, snek)
     {
