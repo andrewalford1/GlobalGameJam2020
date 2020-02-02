@@ -513,7 +513,7 @@ class GameScene extends Phaser.Scene
                     Height: 1080
                 },
                 {
-                    Name: 'bg_2',
+                    Name: 'bg_1',
                     SpritePath: 'assets/img/star.png',
                     Location: {
                         X: window.innerWidth / 2 + 200,
@@ -523,7 +523,7 @@ class GameScene extends Phaser.Scene
                     Height: 1080
                 },
                 {
-                    Name: 'bg_3',
+                    Name: 'bg_2',
                     SpritePath: 'assets/img/star.png',
                     Location: {
                         X: window.innerWidth / 2 + 400,
@@ -533,10 +533,20 @@ class GameScene extends Phaser.Scene
                     Height: 1080
                 },
                 {
-                    Name: 'bg_4',
+                    Name: 'bg_3',
                     SpritePath: 'assets/img/star.png',
                     Location: {
                         X: window.innerWidth / 2 + 600,
+                        Y: window.innerHeight / 2
+                    },
+                    Width: 1920,
+                    Height: 1080
+                },
+                {
+                    Name: 'bg_4',
+                    SpritePath: 'assets/img/star.png',
+                    Location: {
+                        X: window.innerWidth / 2 + 800,
                         Y: window.innerHeight / 2
                     },
                     Width: 1920,
