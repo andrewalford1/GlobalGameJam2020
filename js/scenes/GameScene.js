@@ -95,6 +95,7 @@ class GameScene extends Phaser.Scene
     create()
     {
         this._collidable = this.physics.add.staticGroup();
+        this._nonCollidable = this.physics.add.staticGroup();
 
         for(let i = 0; i < this._staticObjects.length; i++) 
         {
@@ -106,7 +107,7 @@ class GameScene extends Phaser.Scene
             )
             .setScale(this._staticObjects[i].GetScaleX(), this._staticObjects[i].GetScaleY()).refreshBody();
             } else {
-            this._nonCollidable = this.add.image(
+            this._nonCollidable.create(
                 this._staticObjects[i].GetX(), 
                 this._staticObjects[i].GetY(), 
                 this._staticObjects[i].GetName()
@@ -114,7 +115,7 @@ class GameScene extends Phaser.Scene
             .setScale(this._staticObjects[i].GetScaleX(), this._staticObjects[i].GetScaleY());
             }
     
-            this._nonCollidable.setScrollFactor(0);
+            this._nonCollidable.children.entries[0].setScrollFactor(0);
         }
 
         this._player = new Player(this);
