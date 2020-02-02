@@ -12,7 +12,7 @@ class CreditScene extends Phaser.Scene {
 
 
 	preload () {
-		this.load.image('background_img2','assets/img/background.png');
+		this.load.image('background_img2','assets/img/Background.png');
 
 		
 
