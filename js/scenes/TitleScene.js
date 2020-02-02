@@ -33,7 +33,18 @@ class TitleScene extends Phaser.Scene {
                 scaleX: 1,
                 scaleY:1,
                 isCollidable: false      
+            }),
+			new StaticObject({
+                name: 'logo',
+                path: 'assets/img/logo.png',
+                x: window.innerWidth / 2,
+                y: 275,
+                scaleX: 1,
+                scaleY:1,
+                isCollidable: false      
             })
+
+
         ]; 
 
 
@@ -79,7 +90,7 @@ class TitleScene extends Phaser.Scene {
 
 		let lineHeight = 60;
 
-		this.title_text = this.add.text(window.innerWidth/2, 150, 'Asteria').setFont('cursive').setFontSize(300).setTint(0x55FFFF,0xFF55FF,0xFFFF11,0x55FFFF).setStroke("black",40).setShadow(30,30).setOrigin(0.5);
+		//this.title_text = this.add.text(window.innerWidth/2, 150, 'Asteria').setFont('cursive').setFontSize(300).setTint(0x55FFFF,0xFF55FF,0xFFFF11,0x55FFFF).setStroke("black",40).setShadow(30,30).setOrigin(0.5);
 
 		//this.storytext_1 = this.add.text(300,(300+lineHeight), 'In the land of Greece', { fontFamily:  'helvetica', padding: 20 }).setFontSize(40).setStroke("black",20).setVisible(0)
 		//this.storytext_2 = this.add.text(300,(300+(2*lineHeight)), 'High in the sky', { fontFamily: 'helvetica' , padding: 20 }).setFontSize(40).setStroke("black",20).setVisible(0);
