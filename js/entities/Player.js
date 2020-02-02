@@ -2,7 +2,6 @@ class Player
 {
     //Private Fields
     _player;
-    _isPounding;
     constructor (game)
     {
         this._player = game.physics.add.sprite(100, window.innerHeight/2, 'urania');
@@ -13,11 +12,13 @@ class Player
         this._player.setMaxVelocity(300, 1000);
         this._player._canDoubleJump = false;
         this._player._isFloating = false;
+        this._player._isPounding = false;
 
         var badVariablePlayer = this._player;
 
         game.input.keyboard.on('keydown_UP', function(event)
         {
+            if (!badVariablePlayer._isPounding) {
             if (badVariablePlayer.body.touching.down)
             {
                 badVariablePlayer.setVelocityY(-330);
@@ -48,6 +49,7 @@ class Player
                     badVariablePlayer.setGravityY(-200);
                     badVariablePlayer._isFloating = true;
             }
+            }
         });
         game.input.keyboard.on('keydown_DOWN', function(event) {
             if (badVariablePlayer.body.touching.down)
@@ -58,6 +60,7 @@ class Player
             {
                 badVariablePlayer.setVelocityY(750);
                 badVariablePlayer.anims.play('pound', true);
+                badVariablePlayer._isPounding = false;
             }
         });
         
@@ -175,6 +178,7 @@ class Player
             // this._player.anims.play('turn');
             this._player.setDragX(1500);
             this._player._isFloating = false;
+            this._player._isPounding = false;
             this._player._canDoubleJump = true;
         } 
         else 
@@ -190,7 +194,7 @@ class Player
         if (!cursors.up.isDown)
             {
                 this._player._isFloating = false
-                if (!this._player.body.touching.down)
+                if (!this._player.body.touching.down && !this._player._isPounding)
                 {
                     if (this._player.body.velocity.x < 0)
             {
