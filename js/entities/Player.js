@@ -2,8 +2,6 @@ class Player
 {
     //Private Fields
     _player;
-    _canDoubleJump;
-    _isFloating;
     constructor (game)
     {
         this._player = game.physics.add.sprite(window.innerWidth/2, window.innerHeight/2, 'urania');
@@ -12,12 +10,11 @@ class Player
         this._player.setCollideWorldBounds(false);
         this._player.setDrag(30);
         this._player.setMaxVelocity(300, 1000);
-        this._canDoubleJump = false;
+        this._player._canDoubleJump = false;
         this._isFloating = false;
 
         var badVariablePlayer = this._player;
         var badVariableIsFloating = this._isFloating;
-        var badVariableIsDoubleJump = this._canDoubleJump;
 
         game.input.keyboard.on('keydown_UP', function(event)
         {
@@ -33,7 +30,7 @@ class Player
                         badVariablePlayer.anims.play('jump right', true);
                     }
             } 
-            else if (badVariableIsDoubleJump) 
+            else if (badVariablePlayer._canDoubleJump) 
             {
                 badVariablePlayer.setVelocityY(-330);
                 if (badVariablePlayer.body.velocity.x < 0)
@@ -44,7 +41,7 @@ class Player
                     {
                         badVariablePlayer.anims.play('jump right', true);
                     }
-                    badVariableIsDoubleJump = false;
+                    badVariablePlayer._canDoubleJump = false;
             } 
             else 
             {
@@ -63,7 +60,7 @@ class Player
                 badVariablePlayer.anims.play('pound', true);
             }
         });
-
+        
         game.anims.create({
             key: 'pound',
             frames: game.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
@@ -148,10 +145,7 @@ class Player
             }
                 
             }
-            else
-            {
-                this._player.anims.play('float right', true); 
-            }            
+                    
         }
             
         if (this._isFloating)
@@ -181,7 +175,7 @@ class Player
             // this._player.anims.play('turn');
             this._player.setDragX(1500);
             this._isFloating = false;
-            this._canDoubleJump = true;
+            this._player._canDoubleJump = true;
         } 
         else 
         {
