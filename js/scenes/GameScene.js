@@ -407,11 +407,9 @@ class GameScene extends Phaser.Scene
                 isCollidable: false,
                 leftMax: 100,
                 rightMax: 1000,
-            })
-           
-            
-            
+            })   
         ]; 
+        this._snake = this._staticObjects[this._staticObjects.length - 1]
         this._collectibleObjects = [
             new Collectible({
                 name: 'star1',
@@ -587,7 +585,6 @@ class GameScene extends Phaser.Scene
     update()
     {
         this._player.Update(this._cursors);
-        this._snake = this._staticObjects[this._staticObjects.length - 1]
         this._snake.Update(this._cursors);
         }
     }
