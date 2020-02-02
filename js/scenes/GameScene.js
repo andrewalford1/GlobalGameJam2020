@@ -84,9 +84,9 @@ class GameScene extends Phaser.Scene
             new StaticObject({
                 name: 'platform5',
                 path: 'assets/img/Platforms/Grass2.png',
-                x: 3000,
+                x: 3500,
                 y: 1000,
-                scaleX: 0.40,
+                scaleX: 0.20,
                 scaleY: 0.20, 
                 isCollidable: true   
             }),
