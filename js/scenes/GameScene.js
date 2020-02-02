@@ -2,6 +2,7 @@ import Player from '../entities/Player.js';
 import StaticObject from '../entities/StaticObject.js';
 import Npc from '../entities/Npc.js';
 import Collectible from '../entities/Collectible.js';
+import Background from '../entities/Background.js';
 
 class GameScene extends Phaser.Scene
 {
@@ -15,21 +16,13 @@ class GameScene extends Phaser.Scene
     _canDoubleJump;
     _staticObjects;
     _collectibleObjects;
+    _background;
 
     constructor() 
     { 
         super({ key: 'GameScene' });
 
         this._staticObjects = [
-            new StaticObject({
-                name: 'bg',
-                path: 'assets/img/Background.png',
-                x: window.innerWidth / 2,
-                y: window.innerHeight / 2,
-                scaleX: 1,
-                scaleY:1,
-                isCollidable: false      
-            }),
             new StaticObject({
                 name: 'ground',
                 path: 'assets/img/platform.png',
@@ -425,6 +418,62 @@ class GameScene extends Phaser.Scene
             Height: 87,
             Scale: 1.5
         });
+
+        this._background = new Background({
+            Base: {
+                Name: 'bg_base',
+                SpritePath: 'assets/img/Background.png',
+                Location: {
+                    X: window.innerWidth / 2,
+                    Y: window.innerHeight / 2
+                },
+                Width: 1920,
+                Height: 1080
+            },
+            States: [
+                {
+                    Name: 'bg_1',
+                    SpritePath: 'assets/img/star.png',
+                    Location: {
+                        X: window.innerWidth / 2,
+                        Y: window.innerHeight / 2
+                    },
+                    Width: 1920,
+                    Height: 1080
+                },
+                {
+                    Name: 'bg_2',
+                    SpritePath: 'assets/img/star.png',
+                    Location: {
+                        X: window.innerWidth / 2 + 200,
+                        Y: window.innerHeight / 2
+                    },
+                    Width: 1920,
+                    Height: 1080
+                },
+                {
+                    Name: 'bg_3',
+                    SpritePath: 'assets/img/star.png',
+                    Location: {
+                        X: window.innerWidth / 2 + 400,
+                        Y: window.innerHeight / 2
+                    },
+                    Width: 1920,
+                    Height: 1080
+                },
+                {
+                    Name: 'bg_4',
+                    SpritePath: 'assets/img/star.png',
+                    Location: {
+                        X: window.innerWidth / 2 + 600,
+                        Y: window.innerHeight / 2
+                    },
+                    Width: 1920,
+                    Height: 1080
+                }
+            ],
+            Scale: 1
+        });
     }
 
     preload()
@@ -444,6 +493,8 @@ class GameScene extends Phaser.Scene
             );
         }
 
+        this._background.PreLoad(this);
+
         this.load.spritesheet('urania', 'assets/img/Characters/Urania/UraniaSprites5.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania jump', 'assets/img/Characters/Urania/UraniaSpritesJump2.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania pound', 'assets/img/Characters/Urania/UraniaSpritesPound.png', {frameWidth: 76, frameHeight: 87});
@@ -457,6 +508,8 @@ class GameScene extends Phaser.Scene
         this._collidable = this.physics.add.staticGroup();
         this._nonCollidable = this.physics.add.staticGroup();
         this._collectible = this.physics.add.staticGroup();
+
+        this._background.Create(this);
 
         for(let i = 0; i < this._staticObjects.length; i++) 
         {
