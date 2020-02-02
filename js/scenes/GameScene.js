@@ -1,4 +1,5 @@
 import Player from '../entities/Player.js';
+import StaticObject from '../entities/StaticObject.js';
 
 class GameScene extends Phaser.Scene
 {
