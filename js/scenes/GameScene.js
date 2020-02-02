@@ -675,7 +675,7 @@ class GameScene extends Phaser.Scene
         this._leftMax = 1000;
         this._rightMax = 2000;
         this.physics.add.collider(this._player, this._snek, snekHit, null, this);
-        function snekHit (this._player, this._snek)
+        function snekHit (player, snek)
     {
         if (this._player._isPounding) {
             kill(this._snek);
