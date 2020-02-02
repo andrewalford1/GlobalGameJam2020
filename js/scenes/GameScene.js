@@ -568,6 +568,7 @@ class GameScene extends Phaser.Scene
         this.physics.add.overlap(this._player.Get(), this._killable, killPlayer, null, this);
         function killPlayer(_player) {
             _player.disableBody(true, true);
+            bgmusic.stop();
             this.scene.switch('GameOverScene');
         } 
     
