@@ -447,8 +447,8 @@ class GameScene extends Phaser.Scene
                 name: 'lava',
                 path: 'assets/img/platform.png',
                 x: 0,
-                y: 900,
-                scaleX: 10,
+                y: 1200,
+                scaleX: 10000000000,
                 scaleY: 1,
                 isCollidable: false    
             });
