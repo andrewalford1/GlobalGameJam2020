@@ -364,6 +364,7 @@ class GameScene extends Phaser.Scene
     {
         this._collidable = this.physics.add.staticGroup();
         this._nonCollidable = this.physics.add.staticGroup();
+        this._collectible = this.physics.add.staticGroup();
 
         for(let i = 0; i < this._staticObjects.length; i++) 
         {
