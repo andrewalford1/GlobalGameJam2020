@@ -9,10 +9,12 @@ class GameScene extends Phaser.Scene
     _player;
     _collidable;
     _nonCollidable;
+    _collectible;
     _cursors;
     _bad;
     _canDoubleJump;
     _staticObjects;
+    _collectibleObjects;
 
     constructor() 
     { 
@@ -311,6 +313,26 @@ class GameScene extends Phaser.Scene
             
             
         ]; 
+        this._collectibleObjects = [
+            new Collectible({
+                name: 'star1',
+                path: 'assets/img/star.png',
+                x: 1500,
+                y: 900,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: false 
+            }),
+            new Collectible({
+                name: 'star2',
+                path: 'assets/img/star.png',
+                x: 1550,
+                y: 900,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: false 
+            })
+        ]
     }
 
     preload()
@@ -320,6 +342,13 @@ class GameScene extends Phaser.Scene
             this.load.image(
                 this._staticObjects[i].GetName(),
                 this._staticObjects[i].GetPath()
+            );
+        }
+        for (let j = 0; j < this._collectibleObjects.length; j++)
+        {
+            this.load.image(
+                this._collectibleObjects[j].GetName(),
+                this._collectibleObjects[j].GetPath()
             );
         }
 
@@ -361,6 +390,14 @@ class GameScene extends Phaser.Scene
     
             this._nonCollidable.children.entries[0].setScrollFactor(0);
         }
+        for (let j = 0; j < this._collectibleObjects.length; j++)
+        {
+            this._collectible.create(
+                this._collectibleObjects[j].GetX(), 
+                this._collectibleObjects[j].GetY(), 
+                this._collectibleObjects[j].GetName()
+            );
+        }
 
         this._player = new Player(this);
     
@@ -369,7 +406,10 @@ class GameScene extends Phaser.Scene
     
         //collisions
         this.physics.add.collider(this._player.Get(), this._collidable);   
-        //this.physics.add.collider(player, bad, playerHit, null, this);
+        this.physics.add.overlap(this._player.Get(), this._collectible, collectStar); 
+        function collectStar() {
+            console.log("ds");
+        }
     
         this.cameras.main.setBounds(0,0, 1000000000000000000000000000000, 600);
         this.cameras.main.startFollow(this._player.Get());
