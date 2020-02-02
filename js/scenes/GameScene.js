@@ -77,7 +77,7 @@ class GameScene extends Phaser.Scene
                 name: 'platform4',
                 path: 'assets/img/Platforms/Cloud2.png',
                 x: 2000,
-                y: 650,
+                y: 400,
                 scaleX: 0.20,
                 scaleY: 0.20, 
                 isCollidable: true   
@@ -168,6 +168,33 @@ class GameScene extends Phaser.Scene
                 path: 'assets/img/Platforms/Cloud2.png',
                 x: 9000,
                 y: 600,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform13',
+                path: 'assets/img/Platforms/Cloud2.png',
+                x: 11000,
+                y: 600,
+                scaleX: 0.20,
+                scaleY: 0.20, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform14',
+                path: 'assets/img/Column 1.png',
+                x: 10200,
+                y: 1100,
+                scaleX: 0.2,
+                scaleY: 0.2, 
+                isCollidable: true   
+            }),
+            new StaticObject({
+                name: 'platform15',
+                path: 'assets/img/Platforms/Grass2.png',
+                x: 11500,
+                y: 1050,
                 scaleX: 0.20,
                 scaleY: 0.20, 
                 isCollidable: true   
