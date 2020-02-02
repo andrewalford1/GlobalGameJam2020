@@ -31,7 +31,7 @@ class GameOverScene extends Phaser.Scene {
 
 		
 
-		this.title_text = this.add.text(window.innerWidth/2,window.innerHeight/2, 'Game Over').setFont('helvetica').setFontSize(200).setTint(0x55FFFF,0xFF55FF,0xFFFF11,0x55FFFF).setStroke("black",40).setShadow(30,30).setOrigin(0.5);
+		this.title_text = this.add.text(window.innerWidth/2,window.innerHeight/2, 'Game Over').setFont('helvetica').setFontSize(200).setTint(0xE9740D,0xE9100D,0xE90DE6,0xE90D78).setStroke("black",40).setShadow(30,30).setOrigin(0.5);
 
 
 
