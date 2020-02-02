@@ -395,7 +395,7 @@ class GameScene extends Phaser.Scene
                 scaleX: 1,
                 scaleY: 1, 
                 isCollidable: false   
-            });
+            }),
             new Snake({
                 name: 'snake',
                 path: 'assets/img/SnekSprites1.png',
@@ -407,7 +407,7 @@ class GameScene extends Phaser.Scene
                 isCollidable: false,
                 leftMax: 100,
                 rightMax: 1000,
-            })
+            });
            
             
             
