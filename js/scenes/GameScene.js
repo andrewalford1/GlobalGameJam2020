@@ -133,7 +133,7 @@ class GameScene extends Phaser.Scene
         //music
         let bgmusic = this.sound.add('bgmusic');
         bgmusic.play({
-            volume: 3,
+            volume: .3,
             loop: true
         })
     }
