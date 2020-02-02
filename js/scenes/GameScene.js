@@ -714,7 +714,7 @@ class GameScene extends Phaser.Scene
         this._rightMax1 = 16250;
         this.physics.add.collider(this._player.Get(), this._snek1, snekHit, null, this);
         
-        this._snek2 = this.physics.add.sprite(19000, 850, 'snake')
+        this._snek2 = this.physics.add.sprite(19000, 800, 'snake')
         this._snek2.setGravity(-300)
         this._snek2.anims.play('snake left');
         this._snekLeft2 = true;
@@ -722,7 +722,7 @@ class GameScene extends Phaser.Scene
         this._rightMax2 = 19250;
         this.physics.add.collider(this._player.Get(), this._snek2, snekHit, null, this);
         
-        this._snek3 = this.physics.add.sprite(19000, 850, 'snake')
+        this._snek3 = this.physics.add.sprite(19000, 800, 'snake')
         this._snek3.setGravity(-300)
         this._snek3.anims.play('snake right');
         this._snekLeft3 = false;
