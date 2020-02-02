@@ -67,7 +67,7 @@ class Player
         game.anims.create({
             key: 'pound',
             frames: game.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
-            frameRate: 5,
+            frameRate: 19,
             repeat: -1
         });
         game.anims.create({
@@ -140,7 +140,7 @@ class Player
                 this._player.anims.play('turn left');
                 
             }
-            else if (this._player.anims.frameRate == 10)
+            else if (this._player.anims.frameRate < 20)
             {
                 
                 this._player.anims.play('turn right');
