@@ -79,6 +79,8 @@ class GameScene extends Phaser.Scene
         this.load.spritesheet('urania jump', 'assets/img/Characters/Urania/UraniaSpritesJump2.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania pound', 'assets/img/Characters/Urania/UraniaSpritesPound.png', {frameWidth: 76, frameHeight: 87});
         this.load.spritesheet('urania float', 'assets/img/Characters/Urania/UraniaSprites Float3.png', {frameWidth: 76, frameHeight: 87});
+        
+        this.load.audio('bgmusic', 'assets/sfx/bensound-memories.mp3');
     }
 
     create()
@@ -117,6 +119,13 @@ class GameScene extends Phaser.Scene
     
         this.cameras.main.setBounds(0,0, 1000000000000000000000000000000, 600);
         this.cameras.main.startFollow(this._player.Get());
+        
+        //music
+        let bgmusic = this.sound.add('bgmusic');
+        bgmusic.play({
+            volume: 3,
+            loop: true
+        })
     }
 
     update()
