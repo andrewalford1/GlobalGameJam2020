@@ -2,18 +2,71 @@ class Player
 {
     //Private Fields
     _player;
-    _canDoubleJump;
-    _isFloating;
+    _isPounding;
     constructor (game)
     {
-        this._player = game.physics.add.sprite(window.innerWidth/2, window.innerHeight/2, 'urania');
+        this._player = game.physics.add.sprite(100, window.innerHeight/2, 'urania');
         this._player.setScale(1.5);
         this._player.setBounce(0.1);
         this._player.setCollideWorldBounds(false);
         this._player.setDrag(30);
         this._player.setMaxVelocity(300, 1000);
-        this._canDoubleJump = false;
-        this._isFloating = false;
+        this._player._canDoubleJump = false;
+        this._player._isFloating = false;
+
+        var badVariablePlayer = this._player;
+
+        game.input.keyboard.on('keydown_UP', function(event)
+        {
+            if (badVariablePlayer.body.touching.down)
+            {
+                badVariablePlayer.setVelocityY(-330);
+                if (badVariablePlayer.body.velocity.x < 0)
+                {
+                    badVariablePlayer.anims.play('jump left', true);
+                }
+                else 
+                    {
+                        badVariablePlayer.anims.play('jump right', true);
+                    }
+            } 
+            else if (badVariablePlayer._canDoubleJump) 
+            {
+                badVariablePlayer.setVelocityY(-330);
+                if (badVariablePlayer.body.velocity.x < 0)
+                {
+                    badVariablePlayer.anims.play('jump left', true);
+                }
+                else 
+                    {
+                        badVariablePlayer.anims.play('jump right', true);
+                    }
+                    badVariablePlayer._canDoubleJump = false;
+            } 
+            else 
+            {
+                    badVariablePlayer.setGravityY(-200);
+                    badVariablePlayer._isFloating = true;
+            }
+        });
+        game.input.keyboard.on('keydown_DOWN', function(event) {
+            if (badVariablePlayer.body.touching.down)
+            {
+                badVariablePlayer.setDragX(2000);
+            } 
+            else 
+            {
+                badVariablePlayer.setVelocityY(750);
+                badVariablePlayer.anims.play('pound', true);
+            }
+        });
+        
+        game.anims.create({
+            key: 'pound',
+            frames: game.anims.generateFrameNumbers('urania pound', {start: 0, end: 3}),
+            frameRate: 10,
+            repeat: -1
+        });
         game.anims.create({
             key: 'float left',
             frames: game.anims.generateFrameNumbers('urania float', {start: 0, end: 1}),
@@ -84,7 +137,7 @@ class Player
                 this._player.anims.play('turn left');
                 
             }
-            else
+            else if (this._player.anims.frameRate == 10)
             {
                 
                 this._player.anims.play('turn right');
@@ -92,9 +145,10 @@ class Player
             }
                 
             }
+                    
         }
             
-        if (this._isFloating)
+        if (this._player._isFloating)
         {
             if (cursors.left.isDown)
             {
@@ -108,7 +162,7 @@ class Player
             {
                 this._player.anims.play('float left', true);
             }
-            else if (player.anims.frameRate == 10)
+            else
             {
                 this._player.anims.play('float right', true); 
             }            
@@ -120,8 +174,8 @@ class Player
         {
             // this._player.anims.play('turn');
             this._player.setDragX(1500);
-            this._isFloating = false;
-            this._canDoubleJump = true;
+            this._player._isFloating = false;
+            this._player._canDoubleJump = true;
         } 
         else 
         {
@@ -132,6 +186,22 @@ class Player
         {
             this._player.setGravityY(0);
         }
+        
+        if (!cursors.up.isDown)
+            {
+                this._player._isFloating = false
+                if (!this._player.body.touching.down)
+                {
+                    if (this._player.body.velocity.x < 0)
+            {
+                this._player.anims.play('jump left', true);
+            }
+            else 
+                {
+                    this._player.anims.play('jump right', true);
+                }
+                }
+            }
     }
 
     MoveLeft = function()
@@ -172,53 +242,6 @@ class Player
         this._player.setAccelerationX(200);
     }
 
-    Jump = function()
-    {
-        if (this._player.body.touching.down)
-        {
-            this._player.setVelocityY(-330);
-            if (this._player.body.velocity.x < 0)
-            {
-                this._player.anims.play('jump left', true);
-            }
-            else 
-                {
-                    this._player.anims.play('jump right', true);
-                }
-        } 
-        else if (this._canDoubleJump) 
-        {
-            this._player.setVelocityY(-330);
-            if (this._player.body.velocity.x < 0)
-            {
-                this._player.anims.play('jump left', true);
-            }
-            else 
-                {
-                    this._player.anims.play('jump right', true);
-                }
-            this._canDoubleJump = false;
-        } 
-        else 
-        {
-                this._player.setGravityY(-200);
-                this._isFloating = true;
-        }
-    }
-
-    Pound = function()
-    {
-        if (this._player.body.touching.down)
-        {
-            this._player.setDragX(2000);
-        } 
-        else 
-        {
-            this._player.setVelocityY(750);
-        }
-    }
-    
-   
     Hit = function(otherObject)
     {
         this._player.setVelocity(0,0);
@@ -231,3 +254,5 @@ class Player
         return this._player;
     }
 }
+
+export default Player;
