@@ -12,8 +12,6 @@ class GameScene extends Phaser.Scene
     _nonCollidable;
     _collectible;
     _cursors;
-    _bad;
-    _canDoubleJump;
     _staticObjects;
     _collectibleObjects;
     _objective;
