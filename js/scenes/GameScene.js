@@ -505,56 +505,25 @@ class GameScene extends Phaser.Scene
             States: [
                 {
                     Name: 'constellationsMissing',
-                    SpritePath: 'assets/img/background/constellationsMissing.png',
-                    Location: {
-                        X: window.innerWidth / 2,
-                        Y: window.innerHeight / 2
-                    },
-                    Width: 1920,
-                    Height: 1080
+                    SpritePath: 'assets/img/background/constellationsMissing.png'
                 },
                 {
                     Name: 'coronaComplete',
-                    SpritePath: 'assets/img/background/coronaComplete.png',
-                    Location: {
-                        X: window.innerWidth / 2,
-                        Y: window.innerHeight / 2
-                    },
-                    Width: 1920,
-                    Height: 1080
+                    SpritePath: 'assets/img/background/coronaComplete.png'
                 },
                 {
                     Name: 'vigoComplete',
-                    SpritePath: 'assets/img/background/vigoComplete.png',
-                    Location: {
-                        X: window.innerWidth / 2,
-                        Y: window.innerHeight / 2
-                    },
-                    Width: 1920,
-                    Height: 1080
+                    SpritePath: 'assets/img/background/vigoComplete.png'
                 },
                 {
                     Name: 'andromedaComplete',
-                    SpritePath: 'assets/img/background/andromedaComplete.png',
-                    Location: {
-                        X: window.innerWidth / 2,
-                        Y: window.innerHeight / 2
-                    },
-                    Width: 1920,
-                    Height: 1080
+                    SpritePath: 'assets/img/background/andromedaComplete.png'
                 },
                 {
                     Name: 'bearComplete',
-                    SpritePath: 'assets/img/background/bearComplete.png',
-                    Location: {
-                        X: window.innerWidth / 2,
-                        Y: window.innerHeight / 2
-                    },
-                    Width: 1920,
-                    Height: 1080
+                    SpritePath: 'assets/img/background/bearComplete.png'
                 }
-            ],
-            Scale: 1
+            ]
         });
     }
 
@@ -665,8 +634,7 @@ class GameScene extends Phaser.Scene
         this.physics.add.overlap(this._player.Get(), this._killable, killPlayer, null, this);
         function killPlayer(_player) {
             _player.disableBody(true, true);
-            bgmusic.stop();
-            this.scene.switch('GameOverScene');
+            this.GameOver();
         } 
     
         this.cameras.main.setBounds(0,0, 1000000000000000000000000000000, 600);
@@ -734,7 +702,7 @@ class GameScene extends Phaser.Scene
         if (player._isPounding) {
             snek.disableBody(true, true);
         } else {
-            this.scene.switch('GameOverScene');
+            this.GameOver();
         }
     }
     }
@@ -810,6 +778,13 @@ class GameScene extends Phaser.Scene
         
         
         this._player.Update(this._cursors)
+    }
+
+    GameOver = function()
+    {
+        bgmusic.stop();
+        this._background.Reset();
+        this.scene.switch('GameOverScene');
     }
     
 }
