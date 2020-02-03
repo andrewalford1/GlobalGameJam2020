@@ -6,7 +6,7 @@ class Background
 
     constructor(background)
     {
-        this._states = background.States;
+        this._states = background.states;
         this._currentState = 0;
     }
 
@@ -15,7 +15,7 @@ class Background
         for (let i = 0; i < this._states.length; i++)
         {
             gameConfig.load.image(
-                this._states[i].Name,
+                'bg_' + i,
                 this._states[i].SpritePath
             );
         }
@@ -28,7 +28,7 @@ class Background
             this._states[i].Sprite = gameConfig._nonCollidable.create(
                 window.innerWidth / 2,
                 window.innerHeight / 2,
-                this._states[i].Name
+                'bg_' + i
             );
             this._states[i].Sprite.visible = false;
 

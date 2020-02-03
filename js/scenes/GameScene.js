@@ -4,6 +4,7 @@ import Npc from '../entities/Npc.js';
 import Collectible from '../entities/Collectible.js';
 import Objective from '../Objective.js';
 import Background from '../entities/Background.js';
+import BackgroundJson from '../json/backgroundJson.js';
 
 class GameScene extends Phaser.Scene
 {
@@ -501,30 +502,7 @@ class GameScene extends Phaser.Scene
             }); 
              
 
-        this._background = new Background({
-            States: [
-                {
-                    Name: 'constellationsMissing',
-                    SpritePath: 'assets/img/background/constellationsMissing.png'
-                },
-                {
-                    Name: 'coronaComplete',
-                    SpritePath: 'assets/img/background/coronaComplete.png'
-                },
-                {
-                    Name: 'vigoComplete',
-                    SpritePath: 'assets/img/background/vigoComplete.png'
-                },
-                {
-                    Name: 'andromedaComplete',
-                    SpritePath: 'assets/img/background/andromedaComplete.png'
-                },
-                {
-                    Name: 'bearComplete',
-                    SpritePath: 'assets/img/background/bearComplete.png'
-                }
-            ]
-        });
+        this._background = new Background(BackgroundJson);
     }
 
     preload()
