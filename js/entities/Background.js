@@ -2,15 +2,11 @@ class Background
 {
     //Private fields
     _states;
-    _nextState;
     _currentState;
-    _scale;
 
     constructor(background)
     {
-        this._states = background.States;
-        this._location = background.Location;
-        this._scale = background.Scale;
+        this._states = background.states;
         this._currentState = 0;
     }
 
@@ -19,7 +15,7 @@ class Background
         for (let i = 0; i < this._states.length; i++)
         {
             gameConfig.load.image(
-                this._states[i].Name,
+                'bg_' + i,
                 this._states[i].SpritePath
             );
         }
@@ -30,9 +26,9 @@ class Background
         for (let i = 0; i < this._states.length; i++)
         {
             this._states[i].Sprite = gameConfig._nonCollidable.create(
-                this._states[i].Location.X,
-                this._states[i].Location.Y,
-                this._states[i].Name
+                window.innerWidth / 2,
+                window.innerHeight / 2,
+                'bg_' + i
             );
             this._states[i].Sprite.visible = false;
 
@@ -50,11 +46,6 @@ class Background
             this._currentState++;
             this._states[this._currentState].Sprite.visible = true;
         }
-    }
-
-    Reset = function()
-    {
-        this._currentState = 0;
     }
 }
 

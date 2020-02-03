@@ -4,6 +4,7 @@ import Npc from '../entities/Npc.js';
 import Collectible from '../entities/Collectible.js';
 import Objective from '../Objective.js';
 import Background from '../entities/Background.js';
+import BackgroundJson from '../json/backgroundJson.js';
 
 class GameScene extends Phaser.Scene
 {
@@ -501,61 +502,7 @@ class GameScene extends Phaser.Scene
             }); 
              
 
-        this._background = new Background({
-            States: [
-                {
-                    Name: 'constellationsMissing',
-                    SpritePath: 'assets/img/background/constellationsMissing.png',
-                    Location: {
-                        X: window.innerWidth / 2,
-                        Y: window.innerHeight / 2
-                    },
-                    Width: 1920,
-                    Height: 1080
-                },
-                {
-                    Name: 'coronaComplete',
-                    SpritePath: 'assets/img/background/coronaComplete.png',
-                    Location: {
-                        X: window.innerWidth / 2,
-                        Y: window.innerHeight / 2
-                    },
-                    Width: 1920,
-                    Height: 1080
-                },
-                {
-                    Name: 'vigoComplete',
-                    SpritePath: 'assets/img/background/vigoComplete.png',
-                    Location: {
-                        X: window.innerWidth / 2,
-                        Y: window.innerHeight / 2
-                    },
-                    Width: 1920,
-                    Height: 1080
-                },
-                {
-                    Name: 'andromedaComplete',
-                    SpritePath: 'assets/img/background/andromedaComplete.png',
-                    Location: {
-                        X: window.innerWidth / 2,
-                        Y: window.innerHeight / 2
-                    },
-                    Width: 1920,
-                    Height: 1080
-                },
-                {
-                    Name: 'bearComplete',
-                    SpritePath: 'assets/img/background/bearComplete.png',
-                    Location: {
-                        X: window.innerWidth / 2,
-                        Y: window.innerHeight / 2
-                    },
-                    Width: 1920,
-                    Height: 1080
-                }
-            ],
-            Scale: 1
-        });
+        this._background = new Background(BackgroundJson);
     }
 
     preload()
@@ -666,7 +613,7 @@ class GameScene extends Phaser.Scene
         function killPlayer(_player) {
             _player.disableBody(true, true);
             bgmusic.stop();
-            this.scene.switch('GameOverScene');
+            this.GameOver();
         } 
     
         this.cameras.main.setBounds(0,0, 1000000000000000000000000000000, 600);
@@ -734,7 +681,7 @@ class GameScene extends Phaser.Scene
         if (player._isPounding) {
             snek.disableBody(true, true);
         } else {
-            this.scene.switch('GameOverScene');
+            this.GameOver();
         }
     }
     }
@@ -811,7 +758,11 @@ class GameScene extends Phaser.Scene
         
         this._player.Update(this._cursors)
     }
-    
+
+    GameOver = function()
+    {
+        this.scene.switch('GameOverScene');
+    }    
 }
 
 export default GameScene;
