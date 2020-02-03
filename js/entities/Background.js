@@ -47,11 +47,6 @@ class Background
             this._states[this._currentState].Sprite.visible = true;
         }
     }
-
-    Reset = function()
-    {
-        this._currentState = 0;
-    }
 }
 
 export default Background;
