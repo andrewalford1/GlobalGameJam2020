@@ -3,8 +3,7 @@ class Entity
     _posX;
     _posY;
     _scale;
-    _metadata
-    _entity;
+    _metadata;
     
     constructor()
     {
@@ -55,7 +54,9 @@ class Entity
 
     Get()
     {
-        return this._entity;
+        throw new console.error(
+            'Abstract method Entity.Get() must be overriden'
+        )
     }
 
     SetXPos(x)
